@@ -24,5 +24,13 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_historyFragment_to_historyDetailFragment"
+            app:destination="@id/historyDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/historyDetailFragment"
+        android:name="com.bangkit.anemai.ui.history.HistoryDetailFragment"
+        android:label="fragment_history_detail"
+        tools:layout="@layout/fragment_history_detail" />
 </navigation>

@@ -15,8 +15,11 @@
     <string name="dummy_history_result">Result: %s</string>
 
     <string name="history_detection">History Detection</string>
+    <string name="history_detection_detail">Detection Detail</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="back">Back\n</string>
     <string name="logout">Logout</string>
+    <string name="detection_result">Result: %s</string>
+    <string name="detection_date">Date: %s</string>
 </resources>

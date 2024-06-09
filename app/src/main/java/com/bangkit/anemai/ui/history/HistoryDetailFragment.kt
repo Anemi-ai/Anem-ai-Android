@@ -10,23 +10,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.transition.ChangeBounds
 import com.bangkit.anemai.R
-import com.bangkit.anemai.databinding.FragmentHistoryBinding
+import com.bangkit.anemai.databinding.FragmentHistoryDetailBinding
 
-
-class HistoryFragment : Fragment() {
-    private lateinit var binding: FragmentHistoryBinding
+class HistoryDetailFragment : Fragment() {
+    private lateinit var binding: FragmentHistoryDetailBinding
     private lateinit var menuProvider: MenuProvider
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHistoryBinding.inflate(layoutInflater)
+        binding = FragmentHistoryDetailBinding.inflate(layoutInflater)
         sharedElementEnterTransition = ChangeBounds().apply { duration = 750 }
         sharedElementReturnTransition = ChangeBounds().apply { duration = 750 }
         return binding.root
@@ -34,27 +30,24 @@ class HistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupActionbar()
-        setupAction(view)
     }
 
     private fun setupActionbar() {
         (activity as AppCompatActivity).supportActionBar?.apply {
-            title = getString(R.string.history_detection)
+            title = getString(R.string.history_detection_detail)
             setDisplayHomeAsUpEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_arrow_back)
             setHomeButtonEnabled(true)
         }
 
         menuProvider = object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-            }
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {}
 
             override fun onMenuItemSelected(item: MenuItem): Boolean {
                 when (item.itemId) {
                     android.R.id.home -> {
-                        findNavController().navigate(R.id.action_historyFragment_to_mainFragment)
+                        requireActivity().supportFragmentManager.popBackStack()
                         return true
                     }
                 }
@@ -65,15 +58,6 @@ class HistoryFragment : Fragment() {
         }
 
         requireActivity().addMenuProvider(menuProvider)
-    }
-
-    private fun setupAction(view: View) {
-        val extras = FragmentNavigatorExtras(
-            binding.bgLayout to "bg_layout"
-        )
-        binding.btnTest.setOnClickListener{
-            view.findNavController().navigate(R.id.action_historyFragment_to_historyDetailFragment, null, null, extras)
-        }
     }
 
     override fun onStop() {
