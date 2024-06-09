@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Anem.ai</string>
+    <string name="greeting">Hello,</string>
+    <string name="greeting_question">Want to do your check-up today?</string>
+    <string name="greeting_name">%s!</string>
+    <string name="anemia">Anemia</string>
+    <string name="check_up">Check-Up</string>
+    <string name="checkup_desc">Using Machine\nLearning Detection</string>
+    <string name="history">History</string>
+    <string name="shows_records_nof_detection">Shows records \nof detection</string>
+    <string name="article">Article</string>
+
+    <string name="dummy_article_headline">Article Headline</string>
+    <string name="dummy_history_date">Saturday, 12 December 2012</string>
+    <string name="dummy_history_result">Result: %s</string>
+
+    <string name="history_detection">History Detection</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="back">Back\n</string>
+    <string name="logout">Logout</string>
+</resources>

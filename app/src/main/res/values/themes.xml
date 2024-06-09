@@ -1,0 +1,52 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Anemai" parent="Theme.Material3.DayNight">
+        <!-- Customize your light theme here. -->
+        <!--         <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.Anemai" parent="Base.Theme.Anemai">
+        <item name="toolbarStyle">@style/Toolbar</item>
+        <item name="actionBarStyle">@style/Actionbar</item>
+    </style>
+
+    <!--Toolbar & Actionbar Style-->
+    <style name="Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="titleTextColor">@color/white</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+    <style name="Actionbar" parent="Widget.Material3.ActionBar.Solid">
+        <item name="background">@color/transparent</item>
+    </style>
+    <!--Toolbar & Actionbar Style-->
+
+    <!--Text Style-->
+    <style name="TextTitle">
+        <item name="android:textSize">30sp</item>
+    </style>
+    <style name="TextTitle.Bold">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+    <style name="TextTitle.Bold.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="TextTitle.Bold.Black">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TextContent">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+    </style>
+    <style name="TextContent.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="TextContent.Black">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TextContent.blue">
+        <item name="android:textColor">@color/blue</item>
+    </style>
+    <!--Text Style-->
+    
+</resources>
