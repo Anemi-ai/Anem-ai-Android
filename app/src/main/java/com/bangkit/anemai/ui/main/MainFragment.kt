@@ -58,7 +58,13 @@ class MainFragment : Fragment() {
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                TODO("Not yet implemented")
+                return when (menuItem.itemId) {
+                    R.id.menu_exit -> {
+                        view?.findNavController()?.navigate(R.id.action_mainFragment_to_welcomeFragment, null, null, null)
+                        true
+                    }
+                    else -> {false}
+                }
             }
         }
 

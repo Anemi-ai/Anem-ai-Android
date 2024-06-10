@@ -22,4 +22,8 @@
     <string name="logout">Logout</string>
     <string name="detection_result">Result: %s</string>
     <string name="detection_date">Date: %s</string>
+    <string name="headline_welcome">Feeling Headache?</string>
+    <string name="bodycopy_welcome">Headache bisa berasal dari anemia and you can check your Anemia using this app, for FREE! Login or register now!</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
 </resources>
