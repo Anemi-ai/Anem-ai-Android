@@ -26,4 +26,12 @@
     <string name="bodycopy_welcome">Headache bisa berasal dari anemia and you can check your Anemia using this app, for FREE! Login or register now!</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login_with_google">Login with Google</string>
+    <string name="or">OR</string>
+    <string name="full_name">Full Name</string>
+    <string name="birth_date">Birth Date</string>
+    <string name="gender">Gender</string>
+    <string name="register_with_google">Register with Google</string>
 </resources>
