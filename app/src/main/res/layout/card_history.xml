@@ -12,6 +12,7 @@
     app:cardCornerRadius="20dp">
 
     <LinearLayout
+        android:id="@+id/main_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/light_blue"
@@ -28,6 +29,7 @@
             android:text="@string/dummy_history_date"/>
 
         <TextView
+            android:id="@+id/card_result"
             style="@style/TextContent.Black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

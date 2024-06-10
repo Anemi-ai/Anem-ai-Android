@@ -30,7 +30,20 @@ class HistoryDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val result = HistoryDetailFragmentArgs.fromBundle(arguments as Bundle).detectionResult
+        val date = HistoryDetailFragmentArgs.fromBundle(arguments as Bundle).detectionDate
+        val imageUrl = HistoryDetailFragmentArgs.fromBundle(arguments as Bundle).detectionImage
+
         setupActionbar()
+        setup(result, date, imageUrl)
+    }
+
+    //TODO: add image url binding and change the widget to glide
+    private fun setup(result: String, date: String, imageUrl: String) {
+        binding.apply {
+            tvResult.text = result
+            tvDate.text = date
+        }
     }
 
     private fun setupActionbar() {

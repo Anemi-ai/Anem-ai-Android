@@ -10,11 +10,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.ChangeBounds
 import com.bangkit.anemai.R
+import com.bangkit.anemai.data.DataDummy
+import com.bangkit.anemai.data.adapter.HistoryAdapter
+import com.bangkit.anemai.data.model.AnemiaDetection
 import com.bangkit.anemai.databinding.FragmentHistoryBinding
 
 
@@ -35,8 +40,29 @@ class HistoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.rvHistory.layoutManager = LinearLayoutManager(requireContext())
+        val anemiaList = DataDummy.generateAnemiDetectionList()
+
         setupActionbar()
-        setupAction(view)
+//        setupAction(view)
+        setupHistoryData(anemiaList, view)
+    }
+
+    private fun setupHistoryData(anemiaDetection: List<AnemiaDetection>, view: View) {
+        val extras = FragmentNavigatorExtras(
+            binding.bgLayout to "bg_layout"
+        )
+        val toDetailfragment = HistoryFragmentDirections.actionHistoryFragmentToHistoryDetailFragment()
+        val adapter = HistoryAdapter { detection ->
+            toDetailfragment.apply {
+                detectionDate = detection.createdAt.toString()
+                detectionResult = detection.result.toString()
+                detectionImage = detection.imageUrl.toString()
+            }
+            view.findNavController().navigate(toDetailfragment, extras)
+        }
+        binding.rvHistory.adapter = adapter
+        adapter.submitList(anemiaDetection)
     }
 
     private fun setupActionbar() {
@@ -67,14 +93,14 @@ class HistoryFragment : Fragment() {
         requireActivity().addMenuProvider(menuProvider)
     }
 
-    private fun setupAction(view: View) {
-        val extras = FragmentNavigatorExtras(
-            binding.bgLayout to "bg_layout"
-        )
-        binding.btnTest.setOnClickListener{
-            view.findNavController().navigate(R.id.action_historyFragment_to_historyDetailFragment, null, null, extras)
-        }
-    }
+//    private fun setupAction(view: View) {
+//        val extras = FragmentNavigatorExtras(
+//            binding.bgLayout to "bg_layout"
+//        )
+//        binding.btnTest.setOnClickListener{
+//            view.findNavController().navigate(R.id.action_historyFragment_to_historyDetailFragment, null, null, extras)
+//        }
+//    }
 
     override fun onStop() {
         super.onStop()
