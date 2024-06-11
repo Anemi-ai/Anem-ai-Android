@@ -42,9 +42,21 @@
             app:argType="string"
             android:defaultValue="image" />
     </fragment>
+
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.bangkit.anemai.ui.welcome.WelcomeFragment"
         android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" />
+        tools:layout="@layout/fragment_welcome">
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.bangkit.anemai.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.bangkit.anemai.ui.register.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
 </navigation>

@@ -34,7 +34,6 @@ class MainFragment : Fragment() {
         setupAction(view)
         setupActionBar()
 
-
     }
 
     private fun setupAction(view: View) {
