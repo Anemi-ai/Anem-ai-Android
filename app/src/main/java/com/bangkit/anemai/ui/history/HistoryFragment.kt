@@ -80,7 +80,7 @@ class HistoryFragment : Fragment() {
             override fun onMenuItemSelected(item: MenuItem): Boolean {
                 when (item.itemId) {
                     android.R.id.home -> {
-                        findNavController().navigate(R.id.action_historyFragment_to_mainFragment)
+                        requireActivity().supportFragmentManager.popBackStack()
                         return true
                     }
                 }

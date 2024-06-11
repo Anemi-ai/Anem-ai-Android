@@ -19,12 +19,6 @@
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" >
         <action
-            android:id="@+id/action_historyFragment_to_mainFragment"
-            app:destination="@id/mainFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/mainFragment"
-            app:popUpToInclusive="true" />
-        <action
             android:id="@+id/action_historyFragment_to_historyDetailFragment"
             app:destination="@id/historyDetailFragment" />
     </fragment>

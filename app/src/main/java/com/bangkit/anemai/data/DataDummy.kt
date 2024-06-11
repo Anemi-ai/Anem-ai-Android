@@ -70,7 +70,7 @@ object DataDummy {
                 "id$i",
                 "0",
                 "anemia",
-                "https://story-api.dicoding.dev/images/stories/photos-1717168119859_3a984d2b65509da57ee1.jpg",
+                "https://res.cloudinary.com/drjnb5zxa/image/upload/v1698108753/cld-sample-5.jpg",
                 "Saturday, 20 January 2020"
             )
             detectionList.add(detection)
@@ -81,7 +81,7 @@ object DataDummy {
                 "id$i",
                 "0",
                 "normal",
-                "https://story-api.dicoding.dev/images/stories/photos-1717168119859_3a984d2b65509da57ee1.jpg",
+                "https://res.cloudinary.com/drjnb5zxa/image/upload/v1698108753/cld-sample-5.jpg",
                 "Saturday, 20 January 2020"
             )
             detectionList.add(detection)

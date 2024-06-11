@@ -10,10 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
-import androidx.navigation.fragment.findNavController
 import androidx.transition.ChangeBounds
 import com.bangkit.anemai.R
 import com.bangkit.anemai.databinding.FragmentHistoryDetailBinding
+import com.bumptech.glide.Glide
 
 class HistoryDetailFragment : Fragment() {
     private lateinit var binding: FragmentHistoryDetailBinding
@@ -34,6 +34,7 @@ class HistoryDetailFragment : Fragment() {
         val date = HistoryDetailFragmentArgs.fromBundle(arguments as Bundle).detectionDate
         val imageUrl = HistoryDetailFragmentArgs.fromBundle(arguments as Bundle).detectionImage
 
+
         setupActionbar()
         setup(result, date, imageUrl)
     }
@@ -41,8 +42,12 @@ class HistoryDetailFragment : Fragment() {
     //TODO: add image url binding and change the widget to glide
     private fun setup(result: String, date: String, imageUrl: String) {
         binding.apply {
-            tvResult.text = result
-            tvDate.text = date
+            tvResult.text = getString(R.string.detection_result, result)
+            tvDate.text = getString(R.string.detection_date, date)
+            Glide.with(requireContext())
+                .load(imageUrl)
+                .into(binding.imageViewDetection)
+
         }
     }
 
