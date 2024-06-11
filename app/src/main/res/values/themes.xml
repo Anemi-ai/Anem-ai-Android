@@ -10,13 +10,23 @@
         <item name="actionBarStyle">@style/Actionbar</item>
     </style>
 
-    <!--Toolbar & Actionbar Style-->
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/blue</item>
+        <item name="postSplashScreenTheme">@style/Theme.Anemai</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/animated_logo_splash_screen</item>
+    </style>
+
+    <!--Toolbar, Actionbar & View Style-->
     <style name="Toolbar" parent="Widget.Material3.Toolbar">
         <item name="titleTextColor">@color/white</item>
         <item name="android:fontFamily">@font/inter_bold</item>
     </style>
     <style name="Actionbar" parent="Widget.Material3.ActionBar.Solid">
         <item name="background">@color/transparent</item>
+    </style>
+    <style name="ShapeAppearanceOverlay.TextInputLayout.Rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
     </style>
     <!--Toolbar & Actionbar Style-->
 
@@ -34,6 +44,7 @@
     <style name="TextTitle.Bold.Black">
         <item name="android:textColor">@color/black</item>
     </style>
+
     <style name="TextContent">
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/inter_regular</item>
@@ -44,7 +55,24 @@
     <style name="TextContent.Black">
         <item name="android:textColor">@color/black</item>
     </style>
+    <style name="TextContent.Black.Bold">
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
     <style name="TextContent.blue">
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="TextSubhead">
+        <item name="android:textSize">19sp</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+    <style name="TextSubhead.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="TextSubhead.Black">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TextSubhead.blue">
         <item name="android:textColor">@color/blue</item>
     </style>
     <!--Text Style-->

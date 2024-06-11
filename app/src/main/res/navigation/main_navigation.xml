@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_mainFragment_to_historyFragment"
             app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
@@ -39,4 +42,9 @@
             app:argType="string"
             android:defaultValue="image" />
     </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.bangkit.anemai.ui.welcome.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" />
 </navigation>
