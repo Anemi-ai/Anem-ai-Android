@@ -13,8 +13,8 @@
             android:id="@+id/action_mainFragment_to_historyFragment"
             app:destination="@id/historyFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            android:id="@+id/action_mainFragment_to_welcomeActivity"
+            app:destination="@id/welcomeActivity" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
@@ -42,21 +42,10 @@
             app:argType="string"
             android:defaultValue="image" />
     </fragment>
+    <activity
+        android:id="@+id/welcomeActivity"
+        android:name="com.bangkit.anemai.ui.welcome.WelcomeActivity"
+        android:label="activity_welcome"
+        tools:layout="@layout/activity_welcome" />
 
-    <fragment
-        android:id="@+id/welcomeFragment"
-        android:name="com.bangkit.anemai.ui.welcome.WelcomeFragment"
-        android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome">
-    </fragment>
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.bangkit.anemai.ui.login.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
-    <fragment
-        android:id="@+id/registerFragment"
-        android:name="com.bangkit.anemai.ui.register.RegisterFragment"
-        android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
 </navigation>

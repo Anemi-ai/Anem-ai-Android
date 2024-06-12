@@ -9,7 +9,6 @@
     android:background="@color/blue"
     tools:context=".ui.main.MainFragment">
 
-
     <TextView
         android:id="@+id/tv_greeeting"
         style="@style/TextTitle.Bold.White"
