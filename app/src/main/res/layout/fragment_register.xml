@@ -1,22 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:id="@+id/register_fragment"
+    android:transitionName="transition_welcome"
+    android:orientation="vertical"
     android:background="@color/blue"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.register.RegisterFragment">
 
+    <com.bangkit.anemai.ui.welcome.WelcomeImageView
+        android:id="@+id/iv_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="-400dp"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/headline_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextTitle.Bold.White"
+        android:text="@string/headline_welcome"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginStart="30dp" />
+
+    <TextView
+        android:id="@+id/bodycopy_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextContent.White"
+        android:text="@string/bodycopy_welcome"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/card_register"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="18dp"
         android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_margin="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -181,4 +207,4 @@
 
     </androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

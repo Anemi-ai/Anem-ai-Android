@@ -19,6 +19,7 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.bangkit.anemai.R
@@ -31,7 +32,6 @@ import com.bangkit.anemai.ui.register.RegisterFragment
 class WelcomeFragment : Fragment() {
 
     private lateinit var binding: FragmentWelcomeBinding
-    private lateinit var activityBinding: ActivityWelcomeBinding
     private lateinit var setOffsetImage: WelcomeImageView
 
     override fun onCreateView(
@@ -39,39 +39,32 @@ class WelcomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentWelcomeBinding.inflate(layoutInflater)
-        activityBinding = ActivityWelcomeBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setOffsetImage = activityBinding.ivWelcome
+        setOffsetImage = binding.ivWelcome
 
-        // Hide the action bar
-        (activity as? AppCompatActivity)?.supportActionBar?.hide()
-
-        binding.btnLogin.setOnClickListener {
-
-            val setMarginTop = activityBinding.ivWelcome.layoutParams as LinearLayout.LayoutParams
-            setMarginTop.topMargin = -350
-            activityBinding.ivWelcome.layoutParams = setMarginTop
-
-            setOffsetImage.imageVerticalOffset = 250f
-            setOffsetImage.invalidate()
-
-            binding.layoutBtnLoginRegister.visibility = View.GONE
-            activityBinding.logoFooterWelcome.visibility = View.GONE
-
-            view.findNavController().navigate(R.id.action_welcomeFragment_to_loginFragment)
-        }
-
-        binding.btnRegister.setOnClickListener {
-//                 findNavController().navigate(R.id.)
-        }
-
+        setupAction(view)
     }
 
+    private fun setupAction(view: View) {
+        val extras = FragmentNavigatorExtras(
+            binding.welcomeFragment to "transition_welcome"
+        )
+        binding.btnLogin.setOnClickListener {
+            setOffsetImage.imageVerticalOffset = 250f
+            setOffsetImage.invalidate()
+            view.findNavController().navigate(R.id.action_welcomeFragment_to_loginFragment, null, null, extras)
+        }
+        binding.btnRegister.setOnClickListener {
+            setOffsetImage.imageVerticalOffset = 250f
+            setOffsetImage.invalidate()
+            view.findNavController().navigate(R.id.action_welcomeFragment_to_registerFragment, null, null, extras)
+        }
+    }
     
     override fun onDestroyView() {
         super.onDestroyView()

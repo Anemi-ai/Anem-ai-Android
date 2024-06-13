@@ -62,10 +62,8 @@ class MainFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.menu_exit -> {
-                        val intent = Intent(this@MainFragment.requireActivity(), WelcomeActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                        val intent = Intent(requireActivity(), WelcomeActivity::class.java)
                         startActivity(intent)
-                        requireActivity().finish()
                         true
                     }
                     else -> false
