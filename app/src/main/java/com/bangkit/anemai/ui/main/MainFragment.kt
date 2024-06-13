@@ -10,10 +10,17 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.MenuProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.anemai.R
+import com.bangkit.anemai.data.DataDummy
+import com.bangkit.anemai.data.adapter.ArticleAdapter
+import com.bangkit.anemai.data.model.ArticlesResponse
+import com.bangkit.anemai.data.model.ArticlesResponseItem
 import com.bangkit.anemai.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
@@ -31,9 +38,12 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.rvArticle.layoutManager = LinearLayoutManager(requireContext())
+        val articleList = DataDummy.generateArticleList()
+
         setupAction(view)
         setupActionBar()
-
+        setupArticle(articleList, view)
 
     }
 
@@ -69,6 +79,15 @@ class MainFragment : Fragment() {
         }
 
         requireActivity().addMenuProvider(menuProvider)
+    }
+
+    private fun setupArticle(articleList: List<ArticlesResponseItem>, view: View) {
+        val adapter = ArticleAdapter { article ->
+
+        }
+
+        binding.rvArticle.adapter = adapter
+        adapter.submitList(articleList.subList(0,3))
     }
 
     override fun onStop() {

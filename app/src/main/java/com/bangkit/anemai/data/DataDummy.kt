@@ -33,9 +33,9 @@ object DataDummy {
         val articleList = ArrayList<ArticlesResponseItem>()
         for (i in 0..10) {
             val story = ArticlesResponseItem(
-                "https://story-api.dicoding.dev/images/stories/photos-1717168119859_3a984d2b65509da57ee1.jpg",
+                "https://res.cloudinary.com/drjnb5zxa/image/upload/v1698108753/cld-sample-5.jpg",
                 "2024-05-31T15:08:39.868Z",
-                "Test",
+                "https://res.cloudinary.com/drjnb5zxa/image/upload/v1698108753/cld-sample-5.jpg",
                 "pulu pulu",
                 null,
                 "id$i",
@@ -50,9 +50,9 @@ object DataDummy {
         val articleList = ArrayList<ArticlesResponseItem>()
         for (i in 0..10) {
             val story = ArticlesResponseItem(
-                "https://story-api.dicoding.dev/images/stories/photos-1717168119859_3a984d2b65509da57ee1.jpg",
+                "https://res.cloudinary.com/drjnb5zxa/image/upload/v1698108753/cld-sample-5.jpg",
                 "2024-05-31T15:08:39.868Z",
-                "Test",
+                "https://res.cloudinary.com/drjnb5zxa/image/upload/v1698108753/cld-sample-5.jpg",
                 "pulu pulu",
                 null,
                 "id$i",
