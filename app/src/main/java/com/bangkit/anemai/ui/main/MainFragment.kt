@@ -1,7 +1,7 @@
 package com.bangkit.anemai.ui.main
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.ContextMenu
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
@@ -10,8 +10,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.MenuProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
@@ -19,9 +17,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.anemai.R
 import com.bangkit.anemai.data.DataDummy
 import com.bangkit.anemai.data.adapter.ArticleAdapter
-import com.bangkit.anemai.data.model.ArticlesResponse
 import com.bangkit.anemai.data.model.ArticlesResponseItem
 import com.bangkit.anemai.databinding.FragmentMainBinding
+import com.bangkit.anemai.ui.welcome.WelcomeActivity
 
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
@@ -70,10 +68,13 @@ class MainFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.menu_exit -> {
-                        view?.findNavController()?.navigate(R.id.action_mainFragment_to_welcomeFragment, null, null, null)
+                        val intent = Intent(this@MainFragment.requireActivity(), WelcomeActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                        startActivity(intent)
+                        requireActivity().finish()
                         true
                     }
-                    else -> {false}
+                    else -> false
                 }
             }
         }

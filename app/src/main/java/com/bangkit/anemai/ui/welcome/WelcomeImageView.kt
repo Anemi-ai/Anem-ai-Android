@@ -23,6 +23,7 @@ class WelcomeImageView @JvmOverloads constructor(
     private val paint: Paint = Paint().apply {
         isFilterBitmap = false
     }
+    var imageVerticalOffset = 150f
 
     init {
         mImage = BitmapFactory.decodeResource(resources, R.drawable.character_in_welcome)
@@ -55,7 +56,7 @@ class WelcomeImageView @JvmOverloads constructor(
                 result?.eraseColor(Color.TRANSPARENT)
 
                 val offsetX = (width - image.width) / 2f
-                val offsetY = (height - image.height) / 2f + 150f
+                val offsetY = (height - image.height) / 2f + imageVerticalOffset
 
                 tempCanvas.drawBitmap(image, offsetX, offsetY, paint)
 
