@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_mainFragment_to_welcomeActivity"
             app:destination="@id/welcomeActivity" />
+        <action
+            android:id="@+id/action_mainFragment_to_detectionFragment"
+            app:destination="@id/detectionFragment" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
@@ -47,5 +50,19 @@
         android:name="com.bangkit.anemai.ui.welcome.WelcomeActivity"
         android:label="activity_welcome"
         tools:layout="@layout/activity_welcome" />
+    <fragment
+        android:id="@+id/detectionFragment"
+        android:name="com.bangkit.anemai.ui.detection.DetectionFragment"
+        android:label="fragment_detection"
+        tools:layout="@layout/fragment_detection" >
+        <action
+            android:id="@+id/action_detectionFragment_to_detectionResultFragment"
+            app:destination="@id/detectionResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detectionResultFragment"
+        android:name="com.bangkit.anemai.ui.detection.DetectionResultFragment"
+        android:label="fragment_detection_result"
+        tools:layout="@layout/fragment_detection_result" />
 
 </navigation>

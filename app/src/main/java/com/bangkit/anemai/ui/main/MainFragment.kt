@@ -1,6 +1,8 @@
 package com.bangkit.anemai.ui.main
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,7 +11,10 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.MenuProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
@@ -45,12 +50,24 @@ class MainFragment : Fragment() {
 
     }
 
+    override fun onStop() {
+        super.onStop()
+        requireActivity().removeMenuProvider(menuProvider)
+    }
+
     private fun setupAction(view: View) {
         val extras = FragmentNavigatorExtras(
             binding.bgLayout to "bg_layout"
         )
         binding.btnHistory.setOnClickListener {
             view.findNavController().navigate(R.id.action_mainFragment_to_historyFragment, null, null, extras)
+        }
+        binding.btnCheckup.setOnClickListener {
+            if (checkPermission(PERMISSION_CAMERA)) {
+                //TODO: move to detection
+            } else {
+                requestCameraPermissionLauncher.launch(PERMISSION_CAMERA)
+            }
         }
     }
 
@@ -89,8 +106,23 @@ class MainFragment : Fragment() {
         adapter.submitList(articleList.subList(0,3))
     }
 
-    override fun onStop() {
-        super.onStop()
-        requireActivity().removeMenuProvider(menuProvider)
+    private fun checkPermission(permission: String): Boolean {
+        return ContextCompat.checkSelfPermission(
+            requireContext(),
+            permission
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private val requestCameraPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted ->
+            if (isGranted) {
+                Toast.makeText(requireContext(), "Permission granted", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    companion object {
+        private const val PERMISSION_CAMERA = Manifest.permission.CAMERA
     }
 }
