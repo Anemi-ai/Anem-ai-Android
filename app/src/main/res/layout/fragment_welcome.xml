@@ -1,39 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/welcome_fragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
     android:background="@color/blue"
     tools:context=".ui.welcome.WelcomeFragment">
 
-    <com.bangkit.anemai.ui.welcome.WelcomeImageView
-        android:id="@+id/iv_welcome"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:scaleType="centerCrop" />
-
-    <TextView
-        android:id="@+id/headline_welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextTitle.Bold.White"
-        android:text="@string/headline_welcome"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="6dp"
-        android:layout_marginStart="30dp" />
-
-    <TextView
-        android:id="@+id/bodycopy_welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextContent.White"
-        android:text="@string/bodycopy_welcome"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp" />
-
     <LinearLayout
+        android:id="@+id/layout_btn_login_register"
         style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,9 +18,8 @@
         android:showDividers="middle"
         android:layout_gravity="center"
         android:divider="@drawable/empty_tall_divider"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
 
         <Button
             android:id="@+id/btn_login"
@@ -62,22 +38,6 @@
             android:backgroundTint="@color/white"
             android:text="@string/register"
             android:textColor="@color/black" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="100dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_gravity="center">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:importantForAccessibility="no"
-            android:src="@drawable/anem_ai_logo"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="30dp" />
 
     </LinearLayout>
 

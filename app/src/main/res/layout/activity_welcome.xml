@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/welcome_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/blue"
+    tools:context=".ui.welcome.WelcomeActivity">
+
+    <com.bangkit.anemai.ui.welcome.WelcomeImageView
+        android:id="@+id/iv_welcome"
+        android:layout_marginTop="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/headline_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextTitle.Bold.White"
+        android:text="@string/headline_welcome"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginStart="30dp" />
+
+    <TextView
+        android:id="@+id/bodycopy_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextContent.White"
+        android:text="@string/bodycopy_welcome"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_login_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/welcome_navigation" />
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/logo_footer_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/anem_ai_logo"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="30dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
