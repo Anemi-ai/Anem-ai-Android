@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/login_fragment"
-    android:transitionName="transition_welcome"
+    android:transitionName="transition_login"
     android:background="@color/blue"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.login.LoginFragment">
@@ -17,8 +17,9 @@
         <com.bangkit.anemai.ui.welcome.WelcomeImageView
             android:id="@+id/iv_welcome"
             android:layout_width="match_parent"
+            android:transitionName="iv_welcome"
             android:layout_height="400dp"
-            android:layout_marginTop="-190dp"
+            android:layout_marginTop="-220dp"
             android:scaleType="centerCrop" />
 
         <TextView
@@ -27,6 +28,7 @@
             android:layout_height="wrap_content"
             style="@style/TextTitle.Bold.White"
             android:text="@string/headline_welcome"
+            android:transitionName="headline_welcome"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="6dp"
             android:layout_marginStart="30dp" />
@@ -36,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TextContent.White"
+            android:transitionName="bodycopy_welcome"
             android:text="@string/bodycopy_welcome"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp" />
@@ -45,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
+            android:transitionName="card_login"
             app:cardCornerRadius="18dp"
             android:orientation="vertical">
 
@@ -67,7 +71,7 @@
                     app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.TextInputLayout.Rounded"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
@@ -90,7 +94,7 @@
                     app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.TextInputLayout.Rounded"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
@@ -112,7 +116,6 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:backgroundTint="@color/blue"

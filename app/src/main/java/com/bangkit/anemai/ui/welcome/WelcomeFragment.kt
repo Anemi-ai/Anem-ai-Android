@@ -32,7 +32,6 @@ import com.bangkit.anemai.ui.register.RegisterFragment
 class WelcomeFragment : Fragment() {
 
     private lateinit var binding: FragmentWelcomeBinding
-    private lateinit var setOffsetImage: WelcomeImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,32 +44,29 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as? AppCompatActivity)?.supportActionBar?.hide()
-        setOffsetImage = binding.ivWelcome
 
         setupAction(view)
     }
 
     private fun setupAction(view: View) {
-        val extras = FragmentNavigatorExtras(
-            binding.welcomeFragment to "transition_welcome"
+        val extrasLogin = FragmentNavigatorExtras(
+            binding.cardLogin to "card_login",
+            binding.headlineWelcome to "headline_welcome",
+            binding.bodycopyWelcome to "bodycopy_welcome",
+            binding.ivWelcome to "iv_welcome"
+        )
+        val extrasRegister = FragmentNavigatorExtras(
+            binding.cardRegister to "card_register",
+            binding.headlineWelcome to "headline_welcome",
+            binding.bodycopyWelcome to "bodycopy_welcome",
+            binding.ivWelcome to "iv_welcome"
         )
         binding.btnLogin.setOnClickListener {
-            setOffsetImage.imageVerticalOffset = 250f
-            setOffsetImage.invalidate()
-            view.findNavController().navigate(R.id.action_welcomeFragment_to_loginFragment, null, null, extras)
+            view.findNavController().navigate(R.id.action_welcomeFragment_to_loginFragment, null, null, extrasLogin)
         }
         binding.btnRegister.setOnClickListener {
-            setOffsetImage.imageVerticalOffset = 250f
-            setOffsetImage.invalidate()
-            view.findNavController().navigate(R.id.action_welcomeFragment_to_registerFragment, null, null, extras)
+            view.findNavController().navigate(R.id.action_welcomeFragment_to_registerFragment, null, null, extrasRegister)
         }
-    }
-    
-    override fun onDestroyView() {
-        super.onDestroyView()
-
-        // Show the action bar when the fragment is destroyed
-        (activity as? AppCompatActivity)?.supportActionBar?.show()
     }
 
 }
