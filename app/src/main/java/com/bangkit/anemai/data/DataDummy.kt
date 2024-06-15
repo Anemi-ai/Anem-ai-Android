@@ -1,6 +1,6 @@
 package com.bangkit.anemai.data
 
-import com.bangkit.anemai.data.model.AnemiaDetection
+import com.bangkit.anemai.data.model.DetectionResponse
 import com.bangkit.anemai.data.model.ArticlesResponse
 import com.bangkit.anemai.data.model.ArticlesResponseItem
 import com.bangkit.anemai.data.model.Data
@@ -63,12 +63,11 @@ object DataDummy {
         return articleList
     }
 
-    fun generateAnemiDetectionList(): List<AnemiaDetection> {
-        val detectionList = ArrayList<AnemiaDetection>()
+    fun generateAnemiDetectionList(): List<DetectionResponse> {
+        val detectionList = ArrayList<DetectionResponse>()
         for (i in 0..5) {
-            val detection = AnemiaDetection(
+            val detection = DetectionResponse(
                 "id$i",
-                "0",
                 "anemia",
                 "https://res.cloudinary.com/drjnb5zxa/image/upload/v1698108753/cld-sample-5.jpg",
                 "Saturday, 20 January 2020"
@@ -77,9 +76,8 @@ object DataDummy {
         }
 
         for (i in 0..5) {
-            val detection = AnemiaDetection(
+            val detection = DetectionResponse(
                 "id$i",
-                "0",
                 "normal",
                 "https://res.cloudinary.com/drjnb5zxa/image/upload/v1698108753/cld-sample-5.jpg",
                 "Saturday, 20 January 2020"

@@ -49,7 +49,6 @@ class MainFragment : Fragment() {
         setupArticle(articleList, view)
 
     }
-
     override fun onStop() {
         super.onStop()
         requireActivity().removeMenuProvider(menuProvider)
@@ -64,7 +63,7 @@ class MainFragment : Fragment() {
         }
         binding.btnCheckup.setOnClickListener {
             if (checkPermission(PERMISSION_CAMERA)) {
-                //TODO: move to detection
+                view.findNavController().navigate(R.id.action_mainFragment_to_detectionFragment, null, null, extras)
             } else {
                 requestCameraPermissionLauncher.launch(PERMISSION_CAMERA)
             }

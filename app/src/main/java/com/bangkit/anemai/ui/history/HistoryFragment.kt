@@ -10,16 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.ChangeBounds
 import com.bangkit.anemai.R
 import com.bangkit.anemai.data.DataDummy
 import com.bangkit.anemai.data.adapter.HistoryAdapter
-import com.bangkit.anemai.data.model.AnemiaDetection
+import com.bangkit.anemai.data.model.DetectionResponse
 import com.bangkit.anemai.databinding.FragmentHistoryBinding
 
 
@@ -48,7 +46,7 @@ class HistoryFragment : Fragment() {
         setupHistoryData(anemiaList, view)
     }
 
-    private fun setupHistoryData(anemiaDetection: List<AnemiaDetection>, view: View) {
+    private fun setupHistoryData(detectionResponse: List<DetectionResponse>, view: View) {
         val extras = FragmentNavigatorExtras(
             binding.bgLayout to "bg_layout"
         )
@@ -62,7 +60,7 @@ class HistoryFragment : Fragment() {
             view.findNavController().navigate(toDetailfragment, extras)
         }
         binding.rvHistory.adapter = adapter
-        adapter.submitList(anemiaDetection)
+        adapter.submitList(detectionResponse)
     }
 
     private fun setupActionbar() {

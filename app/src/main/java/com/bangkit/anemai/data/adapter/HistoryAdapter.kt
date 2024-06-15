@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.anemai.R
-import com.bangkit.anemai.data.model.AnemiaDetection
+import com.bangkit.anemai.data.model.DetectionResponse
 import com.bangkit.anemai.databinding.CardHistoryBinding
 
-class HistoryAdapter(private val onItemClick: (AnemiaDetection) -> Unit): ListAdapter<AnemiaDetection, HistoryAdapter.ViewHolder>(DIFF_CALLBACK) {
+class HistoryAdapter(private val onItemClick: (DetectionResponse) -> Unit): ListAdapter<DetectionResponse, HistoryAdapter.ViewHolder>(DIFF_CALLBACK) {
     class ViewHolder(private val binding: CardHistoryBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: AnemiaDetection) {
+        fun bind(item: DetectionResponse) {
             binding.apply {
                 cardTitle.text = item.createdAt
                 cardResult.text = item.result
@@ -40,13 +40,13 @@ class HistoryAdapter(private val onItemClick: (AnemiaDetection) -> Unit): ListAd
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<AnemiaDetection>() {
-            override fun areItemsTheSame(oldItem: AnemiaDetection, newItem: AnemiaDetection): Boolean {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DetectionResponse>() {
+            override fun areItemsTheSame(oldItem: DetectionResponse, newItem: DetectionResponse): Boolean {
                 return oldItem == newItem
             }
 
             @SuppressLint("DiffUtilEquals")
-            override fun areContentsTheSame(oldItem: AnemiaDetection, newItem: AnemiaDetection): Boolean {
+            override fun areContentsTheSame(oldItem: DetectionResponse, newItem: DetectionResponse): Boolean {
                 return oldItem == newItem
             }
 
