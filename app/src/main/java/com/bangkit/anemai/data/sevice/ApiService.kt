@@ -35,10 +35,9 @@ interface ApiService {
     suspend fun getStories(): ArticlesResponse
 
     @Multipart
-    @FormUrlEncoded
     @POST("predict")
     suspend fun predictAnemia(
-        @Field("user_id") userId: String,
+        @Part("user_id") userId: String,
         @Part file: MultipartBody.Part
     ): Response<DetectionResponse>
 }

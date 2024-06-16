@@ -182,15 +182,15 @@ class DetectionFragment : Fragment() {
             viewModel.predict(multipartBody).observe(viewLifecycleOwner) { result ->
                 if (result != null) {
                     when(result) {
-                        is Result.Loading -> { /*TODO: Show Loading*/ }
+                        is Result.Loading -> onLoading()
                         is Result.Success -> {
-                            //TODO: loading gone and add result parcelable to detail
+                            onLoadingFinish()
 
                             val toDetailResultFragment = DetectionFragmentDirections.actionDetectionFragmentToDetectionResultFragment(result.data)
                             view.findNavController().navigate(toDetailResultFragment)
                         }
                         is Result.Error -> {
-                            //TODO: loading gone
+                            onLoadingFinish()
 
                             AlertDialog.Builder(context).apply {
                                 setMessage(result.error)
@@ -232,6 +232,8 @@ class DetectionFragment : Fragment() {
             btnSwitchCamera.visibility = View.VISIBLE
             btnPicture.visibility = View.VISIBLE
         }
+
+        currentImgUri = null
         startCamera()
     }
 
@@ -261,6 +263,20 @@ class DetectionFragment : Fragment() {
         }
 
         requireActivity().addMenuProvider(menuProvider)
+    }
+
+    private fun onLoading() {
+        binding.apply {
+            loadingLayout.loadingMainLayout.visibility = View.VISIBLE
+            cameraCard.visibility = View.GONE
+        }
+    }
+
+    private fun onLoadingFinish() {
+        binding.apply {
+            loadingLayout.loadingMainLayout.visibility = View.GONE
+            cameraCard.visibility = View.VISIBLE
+        }
     }
 
     companion object {

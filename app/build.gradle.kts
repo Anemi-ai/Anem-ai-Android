@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -9,6 +12,10 @@ android {
     namespace = "com.bangkit.anemai"
     compileSdk = 34
 
+    val properties = Properties().apply {
+        load(FileInputStream(File(rootProject.rootDir,"local.properties")))
+    }
+
     defaultConfig {
         applicationId = "com.bangkit.anemai"
         minSdk = 24
@@ -18,7 +25,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "BASE_URL", "\"not_yet_implemented\"")
+        buildConfigField("String", "BASE_URL_GENERAL", "\"${properties.getProperty("BASE_URL_GENERAL")}\"")
+        buildConfigField("String", "BASE_URL_ML", "\"${properties.getProperty("BASE_URL_ML")}\"")
         buildConfigField("String", "APPLICATION_ID", "\"com.bangkit.anemai\"")
     }
 

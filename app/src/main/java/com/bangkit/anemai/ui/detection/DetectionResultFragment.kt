@@ -13,6 +13,7 @@ import androidx.core.view.MenuProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.bangkit.anemai.R
+import com.bangkit.anemai.data.model.DetectionResponse
 import com.bangkit.anemai.databinding.FragmentDetectionResultBinding
 
 
@@ -31,12 +32,15 @@ class DetectionResultFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val detectionResult = DetectionResultFragmentArgs.fromBundle(arguments as Bundle).detectionResult
+
         setupActionbar()
+        setupData(detectionResult)
     }
 
     private fun setupActionbar() {
         (activity as AppCompatActivity).supportActionBar?.apply {
-            title = getString(R.string.detection_result)
+            title = getString(R.string.detection_result_name)
             setDisplayHomeAsUpEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_arrow_back)
             setHomeButtonEnabled(true)
@@ -60,5 +64,12 @@ class DetectionResultFragment : Fragment() {
         }
 
         requireActivity().addMenuProvider(menuProvider)
+    }
+
+    private fun setupData(result: DetectionResponse) {
+        binding.apply {
+            tvResult.text = getString(R.string.detection_result, result.result)
+            tvDate.text = getString(R.string.detection_date, result.createdAt)
+        }
     }
 }

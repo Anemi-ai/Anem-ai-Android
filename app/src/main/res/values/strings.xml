@@ -37,4 +37,6 @@
     <string name="error_restart">Something went wrong. Please restart this app</string>
     <string name="anemia_detection">Anemia Detection</string>
     <string name="ok">ok</string>
+    <string name="loading_wait">Please wait a minute. . .</string>
+    <string name="detection_result_name">Detection Result</string>
 </resources>

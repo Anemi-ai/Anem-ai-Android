@@ -5,16 +5,20 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.bangkit.anemai.BuildConfig
+import java.io.File
 import java.io.FileInputStream
 import java.util.Properties
 
 class ApiConfig {
     companion object {
-        private val properties = Properties()
-        private val inputStream = FileInputStream("local.properties")
+//        private val properties = Properties().apply {
+//            load(FileInputStream(File("local.properties")))
+//        }
+//        private val inputStream = FileInputStream("local.properties")
         fun getApiService(): ApiService {
-            properties.load(inputStream)
-            val baseUrlGeneral = properties.getProperty("BASE_URL_GENERAL")
+//            properties.load(inputStream)
+//            val baseUrlGeneral = properties.getProperty("BASE_URL_GENERAL")
+            val baseUrlGeneral = BuildConfig.BASE_URL_GENERAL
 
             val loggingInterceptor = if(BuildConfig.DEBUG) {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -36,8 +40,9 @@ class ApiConfig {
         }
 
         fun getMLApiService(): ApiService {
-            properties.load(inputStream)
-            val baseUrlGeneral = properties.getProperty("BASE_URL_ML")
+//            properties.load(inputStream)
+//            val baseUrlGeneral = properties.getProperty("BASE_URL_ML")
+            val baseUrlGeneral = BuildConfig.BASE_URL_ML
 
             val loggingInterceptor = if(BuildConfig.DEBUG) {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
