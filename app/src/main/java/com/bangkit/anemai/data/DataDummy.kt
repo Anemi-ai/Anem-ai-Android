@@ -5,7 +5,6 @@ import com.bangkit.anemai.data.model.ArticlesResponse
 import com.bangkit.anemai.data.model.ArticlesResponseItem
 import com.bangkit.anemai.data.model.Data
 import com.bangkit.anemai.data.model.LoginResponse
-import com.bangkit.anemai.data.model.RegisterResponse
 
 object DataDummy {
     fun generateRegisterResponse(): RegisterResponse = RegisterResponse(

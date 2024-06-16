@@ -7,8 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import com.bangkit.anemai.R
 import com.bangkit.anemai.databinding.FragmentLoginBinding
+import com.bangkit.anemai.ui.UserViewModelFactory
+import com.bangkit.anemai.ui.ViewModelFactory
+import com.bangkit.anemai.ui.main.MainViewModel
 import com.bangkit.anemai.ui.welcome.WelcomeImageView
 
 class LoginFragment : Fragment() {
@@ -16,6 +20,9 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
     private lateinit var setOffsetImage: WelcomeImageView
+    private val viewModel by viewModels<LoginViewModel> {
+        UserViewModelFactory.getInstance(this.requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +42,11 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as? AppCompatActivity)?.supportActionBar?.hide()
 
-        // Initialize setOffsetImage after the view has been created
+        initialSetOffsetImage()
+
+    }
+
+    private fun initialSetOffsetImage() {
         setOffsetImage = binding.ivWelcome
         setOffsetImage.imageVerticalOffset = 450f
         setOffsetImage.invalidate()
