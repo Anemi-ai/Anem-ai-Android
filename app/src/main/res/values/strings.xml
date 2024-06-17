@@ -39,4 +39,6 @@
     <string name="ok">ok</string>
     <string name="loading_wait">Please wait a minute. . .</string>
     <string name="detection_result_name">Detection Result</string>
+    <string name="wrong_email_format">Wrong email address format!</string>
+    <string name="password_must_be_filled">Password must be filled in</string>
 </resources>
