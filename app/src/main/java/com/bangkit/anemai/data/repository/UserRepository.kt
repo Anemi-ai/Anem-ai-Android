@@ -27,7 +27,7 @@ class UserRepository private constructor(
             addProperty("password", password)
         }
         val response = apiService.login(param)
-        if (response.status!!) {
+        if (!response.status!!) {
             val user = UserModel(response.loginResult!!.id!!, email, response.token!!, true)
             saveSession(user)
             apiService = ApiConfig.getApiService()
@@ -57,10 +57,8 @@ class UserRepository private constructor(
         @Volatile
         private var instance: UserRepository? = null
 
-        suspend fun getInstance(userPreference: UserPreference): UserRepository {
-            val user = userPreference.getSession().first()
-            val token = user.token
-            val apiService = ApiConfig.getApiService(token)
+        fun getInstance(userPreference: UserPreference): UserRepository {
+            val apiService = ApiConfig.getApiService()
             return instance ?: synchronized(this) {
                 UserRepository(apiService, userPreference).also { instance = it }
             }
