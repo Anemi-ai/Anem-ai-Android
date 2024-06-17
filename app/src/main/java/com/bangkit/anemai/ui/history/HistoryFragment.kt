@@ -29,7 +29,7 @@ class HistoryFragment : Fragment() {
     private lateinit var binding: FragmentHistoryBinding
     private lateinit var menuProvider: MenuProvider
     private val viewModel by viewModels<MainViewModel> {
-        ViewModelFactory.getInstance(requireActivity().application)
+        ViewModelFactory.getInstance(requireContext(), requireActivity().application)
     }
 
     override fun onCreateView(
