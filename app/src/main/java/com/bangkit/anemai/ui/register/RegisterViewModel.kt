@@ -17,7 +17,7 @@ class RegisterViewModel (private val userRepository: UserRepository) : ViewModel
         viewModelScope.launch {
             try {
                 val response = userRepository.register(name, birthDate, gender, email, password)
-                if (response.status == false) {
+                if (response.status == true) {
                     _registrationResult.value = Result.success(response.message ?: "User Created")
                 } else {
                     _registrationResult.value = Result.failure(Exception(response.message ?: "User Not Created"))

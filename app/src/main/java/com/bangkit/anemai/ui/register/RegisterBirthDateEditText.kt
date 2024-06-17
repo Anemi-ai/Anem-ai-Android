@@ -16,7 +16,7 @@ class RegisterBirthDateEditText @JvmOverloads constructor(
 ) : AppCompatEditText(context, attrs), View.OnTouchListener {
 
     private val calendar = Calendar.getInstance()
-    private val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.US)
+    private val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.US)
 
     init {
         inputType = InputType.TYPE_NULL

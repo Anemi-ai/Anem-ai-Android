@@ -15,7 +15,7 @@ class ApiConfig {
 //            load(FileInputStream(File("local.properties")))
 //        }
 //        private val inputStream = FileInputStream("local.properties")
-        fun getApiService(): ApiService {
+        fun getApiService(token: String? = null): ApiService {
 //            properties.load(inputStream)
 //            val baseUrlGeneral = properties.getProperty("BASE_URL_GENERAL")
             val baseUrlGeneral = BuildConfig.BASE_URL_GENERAL
@@ -26,10 +26,21 @@ class ApiConfig {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
             }
 
-
-            val client = OkHttpClient.Builder()
+            val clientBuilder = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
-                .build()
+
+            if (token != null) {
+                clientBuilder.addInterceptor { chain ->
+                    val originalRequest = chain.request()
+                    val requestBuilder = originalRequest.newBuilder()
+                        .addHeader("Authorization", "Bearer $token")
+                        .method(originalRequest.method, originalRequest.body)
+                    val request = requestBuilder.build()
+                    chain.proceed(request)
+                }
+            }
+
+            val client = clientBuilder.build()
 
             val retrofit = Retrofit.Builder()
                 .baseUrl(baseUrlGeneral)

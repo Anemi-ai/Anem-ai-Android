@@ -18,7 +18,19 @@ class UserRepository private constructor(
 ){
 
     suspend fun register(name: String, birthDate: String, gender: String, email: String, password: String): RegisterResponse {
-        return apiService.register(name, birthDate, gender, email, password)
+        val param = JsonObject().apply {
+            addProperty("name", name)
+            addProperty("birthDate", birthDate)
+            addProperty("gender", gender)
+            addProperty("email", email)
+            addProperty("password", password)
+        }
+        val response = apiService.register(param)
+        if (response.status!!) {
+            return response
+        } else {
+            throw Exception(response.message)
+        }
     }
 
     suspend fun login(email: String, password: String): LoginResult {
@@ -27,7 +39,7 @@ class UserRepository private constructor(
             addProperty("password", password)
         }
         val response = apiService.login(param)
-        if (!response.status!!) {
+        if (response.status!!) {
             val user = UserModel(response.loginResult!!.id!!, email, response.token!!, true)
             saveSession(user)
             apiService = ApiConfig.getApiService()
@@ -57,8 +69,10 @@ class UserRepository private constructor(
         @Volatile
         private var instance: UserRepository? = null
 
-        fun getInstance(userPreference: UserPreference): UserRepository {
-            val apiService = ApiConfig.getApiService()
+        suspend fun getInstance(userPreference: UserPreference): UserRepository {
+            val user = userPreference.getSession().first()
+            val token = user.token
+            val apiService = ApiConfig.getApiService(token)
             return instance ?: synchronized(this) {
                 UserRepository(apiService, userPreference).also { instance = it }
             }
