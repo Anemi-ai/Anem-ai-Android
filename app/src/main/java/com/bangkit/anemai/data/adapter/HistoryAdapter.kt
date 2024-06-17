@@ -18,7 +18,7 @@ class HistoryAdapter(private val onItemClick: (DetectionResponse) -> Unit): List
             binding.apply {
                 cardTitle.text = item.createdAt
                 cardResult.text = item.result
-                mainLayout.background = if (item.result == "anemia")
+                mainLayout.background = if (item.result?.contains("Anemia") == true)
                     ColorDrawable(ContextCompat.getColor(itemView.context, R.color.light_red))
                 else
                     ColorDrawable(ContextCompat.getColor(itemView.context, R.color.light_blue))

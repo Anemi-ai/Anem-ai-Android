@@ -16,8 +16,7 @@
 
     <string name="history_detection">History Detection</string>
     <string name="history_detection_detail">Detection Detail</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="back">Back\n</string>
     <string name="logout">Logout</string>
     <string name="detection_result">Result: %s</string>
@@ -36,7 +35,17 @@
     <string name="register_with_google">Register with Google</string>
     <string name="error_restart">Something went wrong. Please restart this app</string>
     <string name="anemia_detection">Anemia Detection</string>
-    <string name="ok">ok</string>
-    <string name="loading_wait">Please wait a minute. . .</string>
+    <string name="ok">OK</string>
+    <string name="loading_wait">Please don\'t close this screen</string>
     <string name="detection_result_name">Detection Result</string>
+    <string name="error_try_again">Something went wrong. Please try again.</string>
+    <string name="detection_accuracy">Accuracy: %s</string>
+    <string name="detection_detail">Detection Detail</string>
+    <string name="additional_information">Additional Information</string>
+    <string name="detection_precaution">Precaution: %s</string>
+    <string name="detection_risk">Risk: %s</string>
+    <string name="detection_suggestion">Suggestion: %s</string>
+    <string name="precaution">Precaution</string>
+    <string name="risk">Risk</string>
+    <string name="suggestion">Suggestion</string>
 </resources>

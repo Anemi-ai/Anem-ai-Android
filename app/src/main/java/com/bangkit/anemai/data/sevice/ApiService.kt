@@ -12,6 +12,7 @@ import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
+import retrofit2.http.Path
 
 interface ApiService {
 
@@ -40,4 +41,9 @@ interface ApiService {
         @Part("user_id") userId: String,
         @Part file: MultipartBody.Part
     ): Response<DetectionResponse>
+
+    @GET("history/{id}")
+    suspend fun getHistoryById(
+        @Path("id") userId: String
+    ): Response<List<DetectionResponse>>
 }

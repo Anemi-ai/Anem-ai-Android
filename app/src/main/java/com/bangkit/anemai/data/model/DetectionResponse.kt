@@ -12,7 +12,7 @@ data class DetectionResponse (
         @field:SerializedName("hasil")
         val result: String? = null,
 
-        @field:SerializedName("imageUrl")
+        @field:SerializedName("image_url")
         val imageUrl: String? = null,
 
         @field:SerializedName("waktu_prediksi")
