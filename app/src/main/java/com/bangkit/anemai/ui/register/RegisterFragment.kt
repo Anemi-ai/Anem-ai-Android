@@ -16,7 +16,7 @@ class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<RegisterViewModel> {
-        ViewModelFactory.getInstance(this.requireContext())
+        ViewModelFactory.getInstance(requireContext(), requireActivity().application)
     }
 
     override fun onCreateView(

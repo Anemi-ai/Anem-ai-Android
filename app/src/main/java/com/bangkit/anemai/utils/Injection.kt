@@ -1,5 +1,6 @@
 package com.bangkit.anemai.utils
 
+import android.app.Application
 import android.content.Context
 import com.bangkit.anemai.data.pref.UserPreference
 import com.bangkit.anemai.data.pref.dataStore
@@ -9,9 +10,10 @@ import com.bangkit.anemai.data.sevice.ApiConfig
 import kotlinx.coroutines.runBlocking
 
 object Injection {
-    fun provideDetectionRepository(): DetectionRepository {
+    fun provideDetectionRepository(application: Application): DetectionRepository {
+
         val apiService = ApiConfig.getMLApiService()
-        return DetectionRepository.getInstance(apiService)
+        return DetectionRepository.getInstance(application, apiService)
     }
 
     fun provideRepository(context: Context): UserRepository {

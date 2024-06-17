@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.transition.ChangeBounds
 import com.bangkit.anemai.R
+import com.bangkit.anemai.data.model.DetectionResponse
 import com.bangkit.anemai.databinding.FragmentHistoryDetailBinding
 import com.bumptech.glide.Glide
 
@@ -30,24 +31,28 @@ class HistoryDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val result = HistoryDetailFragmentArgs.fromBundle(arguments as Bundle).detectionResult
-        val date = HistoryDetailFragmentArgs.fromBundle(arguments as Bundle).detectionDate
-        val imageUrl = HistoryDetailFragmentArgs.fromBundle(arguments as Bundle).detectionImage
+        val result = HistoryDetailFragmentArgs.fromBundle(arguments as Bundle).detectionHistory
 
 
         setupActionbar()
-        setup(result, date, imageUrl)
+        setup(result)
     }
 
-    //TODO: add image url binding and change the widget to glide
-    private fun setup(result: String, date: String, imageUrl: String) {
-        binding.apply {
-            tvResult.text = getString(R.string.detection_result, result)
-            tvDate.text = getString(R.string.detection_date, date)
-            Glide.with(requireContext())
-                .load(imageUrl)
-                .into(binding.imageViewDetection)
+    private fun setup(result: DetectionResponse) {
+        val additionalInfo = result.informasiTambahan
 
+        binding.apply {
+            tvResult.text = getString(R.string.detection_result, result.result)
+            tvDate.text = getString(R.string.detection_date, result.createdAt)
+            tvAccuracy.text = getString(R.string.detection_accuracy, result.akurasi)
+            tvRisk.text = additionalInfo?.risikoKomplikasi
+            tvPrecaution.text = additionalInfo?.pencegahan
+            tvSuggestion.text = additionalInfo?.tindakanSaran
+
+            Glide.with(requireContext())
+                .load(result.imageUrl)
+                .load(result.imageUrl)
+                .into(imageViewDetection)
         }
     }
 

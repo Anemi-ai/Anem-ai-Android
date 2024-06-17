@@ -69,7 +69,7 @@ object DataDummy {
             val detection = DetectionResponse(
                 "id$i",
                 "anemia",
-                "https://res.cloudinary.com/drjnb5zxa/image/upload/v1698108753/cld-sample-5.jpg",
+                "https://storage.googleapis.com/anemia-bucket-data/12122/img_2_189.jpg",
                 "Saturday, 20 January 2020"
             )
             detectionList.add(detection)

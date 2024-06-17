@@ -42,5 +42,5 @@ class MainViewModel(private val detectionRepository: DetectionRepository, privat
     }
 
     fun predict(multipart: MultipartBody.Part) = detectionRepository.predictAnemia(multipart)
-
+    fun getHistory() = detectionRepository.fetchHistory()
 }

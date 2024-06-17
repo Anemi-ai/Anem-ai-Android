@@ -1,5 +1,6 @@
 package com.bangkit.anemai.ui.history
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,20 +11,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.ChangeBounds
 import com.bangkit.anemai.R
-import com.bangkit.anemai.data.DataDummy
 import com.bangkit.anemai.data.adapter.HistoryAdapter
 import com.bangkit.anemai.data.model.DetectionResponse
 import com.bangkit.anemai.databinding.FragmentHistoryBinding
+import com.bangkit.anemai.ui.ViewModelFactory
+import com.bangkit.anemai.ui.main.MainViewModel
+import com.bangkit.anemai.utils.Result
 
 
 class HistoryFragment : Fragment() {
     private lateinit var binding: FragmentHistoryBinding
     private lateinit var menuProvider: MenuProvider
+    private val viewModel by viewModels<MainViewModel> {
+        ViewModelFactory.getInstance(requireContext(), requireActivity().application)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,25 +46,43 @@ class HistoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.rvHistory.layoutManager = LinearLayoutManager(requireContext())
-        val anemiaList = DataDummy.generateAnemiDetectionList()
+
+        viewModel.getHistory().observe(viewLifecycleOwner) { result ->
+            if (result != null) {
+                when(result) {
+                    is Result.Loading -> onLoading()
+                    is Result.Success -> {
+                        onLoadingFinish()
+
+                        setupHistoryData(result.data, view)
+                    }
+                    is Result.Error -> {
+                        onLoadingFinish()
+
+                        AlertDialog.Builder(context).apply {
+                            setMessage(result.error)
+                            setPositiveButton(getString(R.string.ok)) { _, _ ->
+                            }
+
+                            create()
+                            show()
+                        }
+                    }
+                }
+            }
+        }
 
         setupActionbar()
-//        setupAction(view)
-        setupHistoryData(anemiaList, view)
     }
 
     private fun setupHistoryData(detectionResponse: List<DetectionResponse>, view: View) {
         val extras = FragmentNavigatorExtras(
             binding.bgLayout to "bg_layout"
         )
-        val toDetailfragment = HistoryFragmentDirections.actionHistoryFragmentToHistoryDetailFragment()
+
         val adapter = HistoryAdapter { detection ->
-            toDetailfragment.apply {
-                detectionDate = detection.createdAt.toString()
-                detectionResult = detection.result.toString()
-                detectionImage = detection.imageUrl.toString()
-            }
-            view.findNavController().navigate(toDetailfragment, extras)
+            val toDetailFragment = HistoryFragmentDirections.actionHistoryFragmentToHistoryDetailFragment(detection)
+            view.findNavController().navigate(toDetailFragment, extras)
         }
         binding.rvHistory.adapter = adapter
         adapter.submitList(detectionResponse)
@@ -91,14 +116,19 @@ class HistoryFragment : Fragment() {
         requireActivity().addMenuProvider(menuProvider)
     }
 
-//    private fun setupAction(view: View) {
-//        val extras = FragmentNavigatorExtras(
-//            binding.bgLayout to "bg_layout"
-//        )
-//        binding.btnTest.setOnClickListener{
-//            view.findNavController().navigate(R.id.action_historyFragment_to_historyDetailFragment, null, null, extras)
-//        }
-//    }
+    private fun onLoading() {
+        binding.apply {
+            loadingProgressBar.visibility = View.VISIBLE
+            rvHistory.visibility = View.GONE
+        }
+    }
+
+    private fun onLoadingFinish() {
+        binding.apply {
+            loadingProgressBar.visibility = View.GONE
+            rvHistory.visibility = View.VISIBLE
+        }
+    }
 
     override fun onStop() {
         super.onStop()

@@ -3,7 +3,6 @@ package com.bangkit.anemai.ui.detection
 import android.app.AlertDialog
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
@@ -43,7 +42,7 @@ class DetectionFragment : Fragment() {
     private var imageCapture: ImageCapture? = null
     private var currentImgUri: Uri? = null
     private val viewModel by viewModels<MainViewModel> {
-        ViewModelFactory.getInstance(this.requireContext())
+        ViewModelFactory.getInstance(requireContext(),requireActivity().application)
     }
 
     override fun onCreateView(
@@ -75,6 +74,7 @@ class DetectionFragment : Fragment() {
         super.onStop()
         requireActivity().removeMenuProvider(menuProvider)
         stopCamera()
+        (activity as AppCompatActivity).supportActionBar?.show()
 
     }
 
@@ -87,6 +87,7 @@ class DetectionFragment : Fragment() {
         binding.btnSwitchCamera.setOnClickListener {
             cameraSelector = if (cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA) CameraSelector.DEFAULT_FRONT_CAMERA
                             else CameraSelector.DEFAULT_BACK_CAMERA
+
 
             startCamera()
         }
@@ -135,8 +136,7 @@ class DetectionFragment : Fragment() {
         cameraProviderFuture.addListener({
             try {
                 cameraProvider.unbindAll()
-            } catch (e: Exception) {
-                Log.e(TAG, "Error stopping camera", e)
+            } catch (_: Exception) {
             }
         }, ContextCompat.getMainExecutor(requireContext()))
 
@@ -153,15 +153,12 @@ class DetectionFragment : Fragment() {
             ContextCompat.getMainExecutor(requireContext()),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                    Toast.makeText(requireContext(), "Berhasil ambil gambar", Toast.LENGTH_SHORT).show()
-
                     currentImgUri = outputFileResults.savedUri
                     showImageView()
                 }
 
                 override fun onError(exception: ImageCaptureException) {
-                    Toast.makeText(requireContext(), "Gagal ambil gambar", Toast.LENGTH_SHORT).show()
-                    Log.e(TAG, "onError: ${exception.message}")
+                    Toast.makeText(requireContext(), getString(R.string.error_restart), Toast.LENGTH_SHORT).show()
                 }
 
             }
@@ -266,20 +263,22 @@ class DetectionFragment : Fragment() {
     }
 
     private fun onLoading() {
+        (activity as AppCompatActivity).supportActionBar?.hide()
         binding.apply {
             loadingLayout.loadingMainLayout.visibility = View.VISIBLE
-            cameraCard.visibility = View.GONE
+            cameraCard.visibility = View.INVISIBLE
         }
+
+
     }
 
     private fun onLoadingFinish() {
+        (activity as AppCompatActivity).supportActionBar?.show()
         binding.apply {
-            loadingLayout.loadingMainLayout.visibility = View.GONE
+            loadingLayout.loadingMainLayout.visibility = View.INVISIBLE
             cameraCard.visibility = View.VISIBLE
         }
     }
 
-    companion object {
-        private const val TAG = "DetectionCamera"
-    }
+
 }

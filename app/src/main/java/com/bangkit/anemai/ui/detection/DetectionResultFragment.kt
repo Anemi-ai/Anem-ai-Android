@@ -10,11 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.bangkit.anemai.R
 import com.bangkit.anemai.data.model.DetectionResponse
 import com.bangkit.anemai.databinding.FragmentDetectionResultBinding
+import com.bumptech.glide.Glide
 
 
 class DetectionResultFragment : Fragment() {
@@ -67,9 +67,20 @@ class DetectionResultFragment : Fragment() {
     }
 
     private fun setupData(result: DetectionResponse) {
+        val additionalInfo = result.informasiTambahan
+
         binding.apply {
             tvResult.text = getString(R.string.detection_result, result.result)
             tvDate.text = getString(R.string.detection_date, result.createdAt)
+            tvAccuracy.text = getString(R.string.detection_accuracy, result.akurasi)
+            tvRisk.text = additionalInfo?.risikoKomplikasi
+            tvPrecaution.text = additionalInfo?.pencegahan
+            tvSuggestion.text = additionalInfo?.tindakanSaran
+
+            Glide.with(requireContext())
+                .load(result.imageUrl)
+                .load(result.imageUrl)
+                .into(imageViewDetection)
         }
     }
 }

@@ -49,4 +49,9 @@ interface ApiService {
         @Part("user_id") userId: String,
         @Part file: MultipartBody.Part
     ): Response<DetectionResponse>
+
+    @GET("history/{id}")
+    suspend fun getHistoryById(
+        @Path("id") userId: String
+    ): Response<List<DetectionResponse>>
 }

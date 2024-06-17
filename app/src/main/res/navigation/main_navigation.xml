@@ -34,16 +34,8 @@
         android:label="fragment_history_detail"
         tools:layout="@layout/fragment_history_detail" >
         <argument
-            android:name="detectionResult"
-            app:argType="string"
-            android:defaultValue="normal" />
-        <argument android:name="detectionDate"
-            app:argType="string"
-            android:defaultValue="Saturday 99 999 9999" />
-        <argument
-            android:name="detectionImage"
-            app:argType="string"
-            android:defaultValue="image" />
+            android:name="detectionHistory"
+            app:argType="com.bangkit.anemai.data.model.DetectionResponse" />
     </fragment>
     <activity
         android:id="@+id/welcomeActivity"

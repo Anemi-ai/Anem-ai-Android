@@ -2,26 +2,22 @@ package com.bangkit.anemai.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.viewModels
 import com.bangkit.anemai.R
 import com.bangkit.anemai.databinding.ActivityMainBinding
 import com.bangkit.anemai.ui.ViewModelFactory
-import com.bangkit.anemai.ui.history.HistoryFragment
 import com.bangkit.anemai.ui.welcome.WelcomeActivity
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-//    private val viewModel by viewModels<MainViewModel>()
     private val viewModel by viewModels<MainViewModel> {
-        ViewModelFactory.getInstance(this)
+        ViewModelFactory.getInstance(this, application)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -23,7 +23,7 @@ class LoginFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var setOffsetImage: WelcomeImageView
     private val viewModel by viewModels<LoginViewModel> {
-        ViewModelFactory.getInstance(this.requireContext())
+        ViewModelFactory.getInstance(this.requireContext(), requireActivity().application)
     }
 
     override fun onCreateView(

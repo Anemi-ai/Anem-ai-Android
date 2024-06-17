@@ -1,5 +1,6 @@
 package com.bangkit.anemai.ui
 
+import android.app.Application
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -25,9 +26,9 @@ class ViewModelFactory(private val detectionRepository: DetectionRepository, pri
         @Volatile
         private var instance: ViewModelFactory? = null
         @JvmStatic
-        fun getInstance(context: Context): ViewModelFactory =
+        fun getInstance(context: Context, application: Application): ViewModelFactory =
             instance ?: synchronized(this) {
-                instance ?: ViewModelFactory(Injection.provideDetectionRepository(), Injection.provideRepository(context))
+                instance ?: ViewModelFactory(Injection.provideDetectionRepository(application), Injection.provideRepository(context))
             }.also { instance = it }
     }
 }
