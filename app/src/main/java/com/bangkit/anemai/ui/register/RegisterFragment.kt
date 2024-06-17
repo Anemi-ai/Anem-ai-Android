@@ -7,13 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import com.bangkit.anemai.R
+import androidx.fragment.app.viewModels
 import com.bangkit.anemai.databinding.FragmentRegisterBinding
+import com.bangkit.anemai.ui.ViewModelFactory
 
 class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
+    private val viewModel by viewModels<RegisterViewModel> {
+        ViewModelFactory.getInstance(this.requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

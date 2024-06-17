@@ -42,7 +42,7 @@ class DetectionFragment : Fragment() {
     private var imageCapture: ImageCapture? = null
     private var currentImgUri: Uri? = null
     private val viewModel by viewModels<MainViewModel> {
-        ViewModelFactory.getInstance(requireActivity().application)
+        ViewModelFactory.getInstance(requireContext(),requireActivity().application)
     }
 
     override fun onCreateView(

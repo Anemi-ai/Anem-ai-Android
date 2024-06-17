@@ -78,11 +78,13 @@
                     android:hint="@string/email"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.bangkit.anemai.ui.login.LoginEmailEditText
                         android:id="@+id/ed_email"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         style="@style/TextContent.Black"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
                         android:ems="10"
                         android:inputType="textEmailAddress"
                         tools:ignore="SpeakableTextPresentCheck" />
@@ -102,10 +104,12 @@
                     app:errorEnabled="true"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.bangkit.anemai.ui.login.LoginPasswordEditText
                         android:id="@+id/ed_password"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
                         style="@style/TextContent.Black"
                         android:ems="10"
                         android:inputType="textPassword"
@@ -114,6 +118,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
+                    android:id="@+id/btn_action_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -130,7 +135,6 @@
                     style="@style/TextContent.Black.Bold" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_action_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/logo_google"

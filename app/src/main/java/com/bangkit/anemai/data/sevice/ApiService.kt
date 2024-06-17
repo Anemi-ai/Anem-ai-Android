@@ -4,8 +4,12 @@ import com.bangkit.anemai.data.model.DetectionResponse
 import com.bangkit.anemai.data.model.ArticlesResponse
 import com.bangkit.anemai.data.model.LoginResponse
 import com.bangkit.anemai.data.model.RegisterResponse
+import com.bangkit.anemai.data.model.UserIdResponse
+import com.bangkit.anemai.data.model.UserResult
+import com.google.gson.JsonObject
 import okhttp3.MultipartBody
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -20,20 +24,24 @@ interface ApiService {
     @POST("register")
     suspend fun register(
         @Field("name") name: String,
+        @Field("birthDate") birthDate: String,
+        @Field("gender") gender: String,
         @Field("email") email: String,
         @Field("password") password: String
-    ): Response<RegisterResponse>
+    ): RegisterResponse
 
-    @FormUrlEncoded
-    @POST("login")
+    @POST("auth/login")
     suspend fun login(
-        @Field("name") name: String,
-        @Field("email") email: String,
-        @Field("password") password: String
-    ) : Response<LoginResponse>
+        @Body raw: JsonObject
+    ): LoginResponse
 
     @GET("stories")
     suspend fun getStories(): ArticlesResponse
+
+    @GET("users/{id}")
+    suspend fun getUserDetail(
+        @Path("id") id: String
+    ): UserIdResponse
 
     @Multipart
     @POST("predict")

@@ -1,23 +1,43 @@
 package com.bangkit.anemai.ui.main
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.bangkit.anemai.data.model.UserIdResponse
+import com.bangkit.anemai.data.pref.UserModel
 import com.bangkit.anemai.data.repository.DetectionRepository
+import com.bangkit.anemai.data.repository.UserRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 
-class MainViewModel(private val detectionRepository: DetectionRepository): ViewModel() {
+class MainViewModel(private val detectionRepository: DetectionRepository, private val userRepository: UserRepository): ViewModel() {
 
-    private val _isReady = MutableStateFlow(false)
-    val isReady = _isReady.asStateFlow()
+    private val _userDetail = MutableLiveData<UserIdResponse>()
+    val userDetail: LiveData<UserIdResponse> get() = _userDetail
 
-    init {
+    fun getSession(): LiveData<UserModel> {
+        return userRepository.getSession().asLiveData()
+    }
+
+    fun logout() {
         viewModelScope.launch {
-            delay(3000)
-            _isReady.value = true
+            userRepository.logout()
+        }
+    }
+
+    fun getDetailUser(userId: String) {
+        viewModelScope.launch {
+            try {
+                val response = userRepository.getDetailUser(userId)
+                _userDetail.value = response
+            } catch (e: Exception) {
+                // Handle exceptions
+            }
         }
     }
 

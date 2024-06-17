@@ -1,5 +1,6 @@
 package com.bangkit.anemai.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -10,24 +11,27 @@ import androidx.core.view.WindowInsetsCompat
 import com.bangkit.anemai.R
 import com.bangkit.anemai.databinding.ActivityMainBinding
 import com.bangkit.anemai.ui.ViewModelFactory
+import com.bangkit.anemai.ui.welcome.WelcomeActivity
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<MainViewModel> {
-        ViewModelFactory.getInstance(application)
+        ViewModelFactory.getInstance(this, application)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+
+        navigateStartingScreen()
 
         installSplashScreen().apply {
             setKeepOnScreenCondition {
-                !viewModel.isReady.value
+                false
             }
         }
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -35,6 +39,15 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+    }
+
+    private fun navigateStartingScreen() {
+        viewModel.getSession().observe(this) { user ->
+            if (!user.isLogin) {
+                finish()
+                startActivity(Intent(this, WelcomeActivity::class.java))
+            }
+        }
     }
 
 }

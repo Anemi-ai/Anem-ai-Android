@@ -13,9 +13,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,12 +26,20 @@ import com.bangkit.anemai.R
 import com.bangkit.anemai.data.DataDummy
 import com.bangkit.anemai.data.adapter.ArticleAdapter
 import com.bangkit.anemai.data.model.ArticlesResponseItem
+import com.bangkit.anemai.data.pref.UserPreference
+import com.bangkit.anemai.data.pref.dataStore
 import com.bangkit.anemai.databinding.FragmentMainBinding
+import com.bangkit.anemai.ui.ViewModelFactory
 import com.bangkit.anemai.ui.welcome.WelcomeActivity
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
     private lateinit var menuProvider: MenuProvider
+    private val viewModel by viewModels<MainViewModel> {
+        ViewModelFactory.getInstance(this.requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,8 +58,24 @@ class MainFragment : Fragment() {
         setupAction(view)
         setupActionBar()
         setupArticle(articleList, view)
+        setupName()
 
     }
+
+    private fun setupName() {
+        lifecycleScope.launch {
+            val userPreference = UserPreference.getInstance(requireContext().dataStore)
+            val user = userPreference.getSession().first()
+            val idUser = user.id
+
+            viewModel.getDetailUser(idUser)
+
+            viewModel.userDetail.observe(viewLifecycleOwner) { userDetail ->
+                binding.tvGreeetingName.text = userDetail.userResult!!.name
+            }
+        }
+    }
+
     override fun onStop() {
         super.onStop()
         requireActivity().removeMenuProvider(menuProvider)

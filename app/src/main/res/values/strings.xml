@@ -38,6 +38,7 @@
     <string name="ok">OK</string>
     <string name="loading_wait">Please don\'t close this screen</string>
     <string name="detection_result_name">Detection Result</string>
+
     <string name="error_try_again">Something went wrong. Please try again.</string>
     <string name="detection_accuracy">Accuracy: %s</string>
     <string name="detection_detail">Detection Detail</string>
@@ -48,4 +49,12 @@
     <string name="precaution">Precaution</string>
     <string name="risk">Risk</string>
     <string name="suggestion">Suggestion</string>
+
+    <string name="wrong_email_format">Wrong email address format!</string>
+    <string name="password_must_be_filled">Password must be filled</string>
+    <string name="password_must_contain_lowercase">Password must contain at least one lowercase letter</string>
+    <string name="password_must_contain_uppercase">Password must contain at least one uppercase letter</string>
+    <string name="password_must_contain_special_character">Password must contain at least one special character</string>
+    <string name="name_must_be_filled">Name must be filled</string>
+
 </resources>

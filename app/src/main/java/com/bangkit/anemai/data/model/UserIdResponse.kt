@@ -2,25 +2,19 @@ package com.bangkit.anemai.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class RegisterResponse(
+data class UserIdResponse(
 
-	@field:SerializedName("data")
-	val registerResult: RegisterResult? = null,
-
-	@field:SerializedName("message")
-	val message: String? = null,
-
-	@field:SerializedName("status")
-	val status: Boolean? = null
+	@field:SerializedName("user")
+	val userResult: UserResult? = null
 )
 
-data class RegisterResult(
+data class UserResult(
+
+	@field:SerializedName("createdAt")
+	val createdAt: String? = null,
 
 	@field:SerializedName("password")
 	val password: String? = null,
-
-	@field:SerializedName("gender")
-	val gender: String? = null,
 
 	@field:SerializedName("name")
 	val name: String? = null,

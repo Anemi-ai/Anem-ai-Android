@@ -3,15 +3,16 @@ package com.bangkit.anemai.data
 import com.bangkit.anemai.data.model.DetectionResponse
 import com.bangkit.anemai.data.model.ArticlesResponse
 import com.bangkit.anemai.data.model.ArticlesResponseItem
-import com.bangkit.anemai.data.model.Data
 import com.bangkit.anemai.data.model.LoginResponse
+import com.bangkit.anemai.data.model.LoginResult
 import com.bangkit.anemai.data.model.RegisterResponse
+import com.bangkit.anemai.data.model.RegisterResult
 
 object DataDummy {
     fun generateRegisterResponse(): RegisterResponse = RegisterResponse(
         status = true,
         message = "Pengguna berhasil ditambahkan",
-        data = Data(
+        registerResult = RegisterResult(
             "Pulu",
             "0",
             "pulu@gmail.com"
@@ -22,10 +23,9 @@ object DataDummy {
         status = true,
         message = "Login berhasil",
         token = "asasa1qwidjmqwd.qw9djqd.q0wdj",
-        data = Data(
+        loginResult = LoginResult(
             "Pulu",
-            "0",
-            "pulu@gmail.com"
+            "0"
         )
     )
 
