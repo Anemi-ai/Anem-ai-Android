@@ -111,6 +111,7 @@ class MainFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.menu_exit -> {
+                        viewModel.logout()
                         val intent = Intent(requireActivity(), WelcomeActivity::class.java)
                         startActivity(intent)
                         true
