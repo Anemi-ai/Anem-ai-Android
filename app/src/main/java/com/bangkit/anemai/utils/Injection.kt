@@ -13,4 +13,11 @@ object Injection {
         val apiService = ApiConfig.getMLApiService()
         return DetectionRepository.getInstance(apiService)
     }
+
+    fun provideRepository(context: Context): UserRepository {
+        val userPreference = UserPreference.getInstance(context.dataStore)
+        return runBlocking {
+            UserRepository.getInstance(userPreference)
+        }
+    }
 }

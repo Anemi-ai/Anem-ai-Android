@@ -31,9 +31,9 @@ class WelcomeActivity : AppCompatActivity(), ProgressBarHandler {
 
     override fun showLoading(state: Boolean) {
         if (state) {
-            binding.progressBar.visibility = View.VISIBLE
+            binding.loadingScreen.visibility = View.VISIBLE
         } else {
-            binding.progressBar.visibility = View.GONE
+            binding.loadingScreen.visibility = View.GONE
         }
     }
 }

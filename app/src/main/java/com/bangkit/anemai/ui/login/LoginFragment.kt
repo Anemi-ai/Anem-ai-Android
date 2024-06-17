@@ -10,12 +10,9 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
-import com.bangkit.anemai.R
 import com.bangkit.anemai.databinding.FragmentLoginBinding
-import com.bangkit.anemai.ui.UserViewModelFactory
 import com.bangkit.anemai.ui.ViewModelFactory
 import com.bangkit.anemai.ui.main.MainActivity
-import com.bangkit.anemai.ui.main.MainViewModel
 import com.bangkit.anemai.ui.welcome.WelcomeImageView
 import com.bangkit.anemai.utils.ProgressBarHandler
 
@@ -26,7 +23,7 @@ class LoginFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var setOffsetImage: WelcomeImageView
     private val viewModel by viewModels<LoginViewModel> {
-        UserViewModelFactory.getInstance(this.requireContext())
+        ViewModelFactory.getInstance(this.requireContext())
     }
 
     override fun onCreateView(

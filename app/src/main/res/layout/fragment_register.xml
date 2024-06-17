@@ -79,7 +79,7 @@
                     android:hint="@string/full_name"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.bangkit.anemai.ui.register.RegisterNameEditText
                         android:id="@+id/ed_register_full_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
                     android:hint="@string/birth_date"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.bangkit.anemai.ui.register.RegisterBirthDateEditText
                         android:id="@+id/ed_register_birth_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
                     android:hint="@string/gender"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.bangkit.anemai.ui.register.RegisterGenderEditText
                         android:id="@+id/ed_register_gender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -148,7 +148,7 @@
                     android:hint="@string/email"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.bangkit.anemai.ui.register.RegisterEmailEditText
                         android:id="@+id/ed_register_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -171,7 +171,7 @@
                     android:hint="@string/password"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.bangkit.anemai.ui.register.RegisterPasswordEditText
                         android:id="@+id/ed_register_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -183,6 +183,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
+                    android:id="@+id/btn_action_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
@@ -200,7 +201,6 @@
                     style="@style/TextContent.Black.Bold" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_action_register"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/logo_google"

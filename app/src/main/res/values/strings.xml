@@ -40,5 +40,9 @@
     <string name="loading_wait">Please wait a minute. . .</string>
     <string name="detection_result_name">Detection Result</string>
     <string name="wrong_email_format">Wrong email address format!</string>
-    <string name="password_must_be_filled">Password must be filled in</string>
+    <string name="password_must_be_filled">Password must be filled</string>
+    <string name="password_must_contain_lowercase">Password must contain at least one lowercase letter</string>
+    <string name="password_must_contain_uppercase">Password must contain at least one uppercase letter</string>
+    <string name="password_must_contain_special_character">Password must contain at least one special character</string>
+    <string name="name_must_be_filled">Name must be filled</string>
 </resources>
