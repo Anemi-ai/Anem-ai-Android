@@ -77,6 +77,11 @@ class ArticleFragment : Fragment() {
         setupActionbar()
     }
 
+    override fun onStop() {
+        super.onStop()
+        requireActivity().removeMenuProvider(menuProvider)
+    }
+
     private fun setupActionbar() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.article)

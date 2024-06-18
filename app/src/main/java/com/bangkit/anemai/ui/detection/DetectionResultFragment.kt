@@ -41,6 +41,11 @@ class DetectionResultFragment : Fragment() {
         setupData(detectionResult)
     }
 
+    override fun onStop() {
+        super.onStop()
+        requireActivity().removeMenuProvider(menuProvider)
+    }
+
     private fun setupActionbar() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.detection_result_name)
