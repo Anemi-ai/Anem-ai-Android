@@ -22,6 +22,7 @@ import com.bangkit.anemai.data.model.DetectionResponse
 import com.bangkit.anemai.databinding.FragmentHistoryBinding
 import com.bangkit.anemai.ui.ViewModelFactory
 import com.bangkit.anemai.ui.main.MainViewModel
+import com.bangkit.anemai.ui.welcome.WelcomeActivity
 import com.bangkit.anemai.utils.Result
 
 
@@ -50,14 +51,14 @@ class HistoryFragment : Fragment() {
         viewModel.getHistory().observe(viewLifecycleOwner) { result ->
             if (result != null) {
                 when(result) {
-                    is Result.Loading -> onLoading()
+                    is Result.Loading -> showLoading(true)
                     is Result.Success -> {
-                        onLoadingFinish()
+                        showLoading(false)
 
                         setupHistoryData(result.data, view)
                     }
                     is Result.Error -> {
-                        onLoadingFinish()
+                        showLoading(false)
 
                         AlertDialog.Builder(context).apply {
                             setMessage(result.error)
@@ -116,17 +117,11 @@ class HistoryFragment : Fragment() {
         requireActivity().addMenuProvider(menuProvider)
     }
 
-    private fun onLoading() {
-        binding.apply {
-            loadingProgressBar.visibility = View.VISIBLE
-            rvHistory.visibility = View.GONE
-        }
-    }
-
-    private fun onLoadingFinish() {
-        binding.apply {
-            loadingProgressBar.visibility = View.GONE
-            rvHistory.visibility = View.VISIBLE
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            (activity as? WelcomeActivity)?.showLoading(true)
+        } else {
+            (activity as? WelcomeActivity)?.showLoading(false)
         }
     }
 

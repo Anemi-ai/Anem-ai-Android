@@ -8,27 +8,19 @@
     tools:context=".ui.detection.DetectionFragment"
     android:background="@color/blue">
 
-    <include
-        android:id="@+id/loading_layout"
-        layout="@layout/layout_loading"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:visibility="invisible"/>
-
     <androidx.cardview.widget.CardView
         android:id="@+id/camera_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="25dp"
-        android:transitionName="bg_layout"
+        android:transitionName="camera_card"
         android:layout_marginBottom="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
             <androidx.camera.view.PreviewView
                 android:id="@+id/viewFinder"
@@ -108,5 +100,17 @@
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/result_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        android:transitionName="result_layout"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="bottom|center">
+    </androidx.cardview.widget.CardView>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

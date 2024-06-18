@@ -21,11 +21,13 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.transition.ChangeBounds
 import com.bangkit.anemai.R
 import com.bangkit.anemai.databinding.FragmentDetectionBinding
 import com.bangkit.anemai.ui.ViewModelFactory
 import com.bangkit.anemai.ui.main.MainViewModel
+import com.bangkit.anemai.ui.welcome.WelcomeActivity
 import com.bangkit.anemai.utils.Result
 import com.bangkit.anemai.utils.createCustomTempFile
 import com.bangkit.anemai.utils.uriToFile
@@ -179,15 +181,19 @@ class DetectionFragment : Fragment() {
             viewModel.predict(multipartBody).observe(viewLifecycleOwner) { result ->
                 if (result != null) {
                     when(result) {
-                        is Result.Loading -> onLoading()
+                        is Result.Loading -> showLoading(true)
                         is Result.Success -> {
-                            onLoadingFinish()
+                            showLoading(false)
 
+                            val extrasDetectionResult = FragmentNavigatorExtras(
+                                binding.cameraCard to "image_view_layout",
+                                binding.resultLayout to "result_layout"
+                            )
                             val toDetailResultFragment = DetectionFragmentDirections.actionDetectionFragmentToDetectionResultFragment(result.data)
-                            view.findNavController().navigate(toDetailResultFragment)
+                            view.findNavController().navigate(toDetailResultFragment, extrasDetectionResult)
                         }
                         is Result.Error -> {
-                            onLoadingFinish()
+                            showLoading(false)
 
                             AlertDialog.Builder(context).apply {
                                 setMessage(result.error)
@@ -262,23 +268,12 @@ class DetectionFragment : Fragment() {
         requireActivity().addMenuProvider(menuProvider)
     }
 
-    private fun onLoading() {
-        (activity as AppCompatActivity).supportActionBar?.hide()
-        binding.apply {
-            loadingLayout.loadingMainLayout.visibility = View.VISIBLE
-            cameraCard.visibility = View.INVISIBLE
-        }
-
-
-    }
-
-    private fun onLoadingFinish() {
-        (activity as AppCompatActivity).supportActionBar?.show()
-        binding.apply {
-            loadingLayout.loadingMainLayout.visibility = View.INVISIBLE
-            cameraCard.visibility = View.VISIBLE
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            (activity as? WelcomeActivity)?.showLoading(true)
+        } else {
+            (activity as? WelcomeActivity)?.showLoading(false)
         }
     }
-
 
 }

@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.navigation.findNavController
+import androidx.transition.ChangeBounds
 import com.bangkit.anemai.R
 import com.bangkit.anemai.data.model.DetectionResponse
 import com.bangkit.anemai.databinding.FragmentDetectionResultBinding
@@ -26,6 +27,8 @@ class DetectionResultFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetectionResultBinding.inflate(layoutInflater)
+        sharedElementEnterTransition = ChangeBounds().apply { duration = 500 }
+        sharedElementReturnTransition = ChangeBounds().apply { duration = 500 }
         return binding.root
     }
 

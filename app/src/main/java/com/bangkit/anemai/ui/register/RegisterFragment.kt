@@ -16,11 +16,11 @@ import com.bangkit.anemai.R
 import com.bangkit.anemai.databinding.FragmentRegisterBinding
 import com.bangkit.anemai.ui.ViewModelFactory
 import com.bangkit.anemai.ui.main.MainActivity
+import com.bangkit.anemai.ui.welcome.WelcomeActivity
 import com.bangkit.anemai.utils.ProgressBarHandler
 
 class RegisterFragment : Fragment() {
 
-    private var progressBarHandler: ProgressBarHandler? = null
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<RegisterViewModel> {
@@ -58,17 +58,17 @@ class RegisterFragment : Fragment() {
                 val password = edRegisterPassword.text.toString()
 
                 viewModel.registerUser(name, birthDate, gender, email, password)
-                progressBarHandler?.showLoading(true)
+                showLoading(true)
             }
         }
 
         viewModel.registrationResult.observe(viewLifecycleOwner) { result ->
             result.fold(
                 onSuccess = { message ->
-                    progressBarHandler?.showLoading(false)
+                    showLoading(false)
                     showAlertDialogSuccess("Yes!", message)
                 }, onFailure = { exception ->
-                    progressBarHandler?.showLoading(false)
+                    showLoading(false)
                     showAlertDialogFailure("Oh no!", exception.message ?: "Unknown error")
                 }
             )
@@ -102,6 +102,14 @@ class RegisterFragment : Fragment() {
             }
             .create()
             .show()
+    }
+
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            (activity as? WelcomeActivity)?.showLoading(true)
+        } else {
+            (activity as? WelcomeActivity)?.showLoading(false)
+        }
     }
 
     override fun onDestroyView() {

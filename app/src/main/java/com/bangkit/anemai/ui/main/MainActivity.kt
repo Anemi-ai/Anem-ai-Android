@@ -2,6 +2,7 @@ package com.bangkit.anemai.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -12,8 +13,9 @@ import com.bangkit.anemai.R
 import com.bangkit.anemai.databinding.ActivityMainBinding
 import com.bangkit.anemai.ui.ViewModelFactory
 import com.bangkit.anemai.ui.welcome.WelcomeActivity
+import com.bangkit.anemai.utils.ProgressBarHandler
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ProgressBarHandler {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<MainViewModel> {
@@ -47,6 +49,14 @@ class MainActivity : AppCompatActivity() {
                 finish()
                 startActivity(Intent(this, WelcomeActivity::class.java))
             }
+        }
+    }
+
+    override fun showLoading(state: Boolean) {
+        if (state) {
+            binding.loadingScreen.visibility = View.VISIBLE
+        } else {
+            binding.loadingScreen.visibility = View.GONE
         }
     }
 

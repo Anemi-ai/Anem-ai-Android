@@ -42,7 +42,7 @@ class UserRepository private constructor(
         if (response.status!!) {
             val user = UserModel(response.loginResult!!.id!!, email, response.token!!, true)
             saveSession(user)
-            apiService = ApiConfig.getApiService()
+            apiService = ApiConfig.getApiService(user.token)
             return response.loginResult
         } else {
             throw Exception(response.message)
