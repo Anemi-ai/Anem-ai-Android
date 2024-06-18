@@ -2,16 +2,14 @@ package com.bangkit.anemai.data.sevice
 
 import com.bangkit.anemai.data.model.DetectionResponse
 import com.bangkit.anemai.data.model.ArticlesResponse
+import com.bangkit.anemai.data.model.ArticlesResponseItem
 import com.bangkit.anemai.data.model.LoginResponse
 import com.bangkit.anemai.data.model.RegisterResponse
 import com.bangkit.anemai.data.model.UserIdResponse
-import com.bangkit.anemai.data.model.UserResult
 import com.google.gson.JsonObject
 import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
@@ -30,8 +28,13 @@ interface ApiService {
         @Body raw: JsonObject
     ): LoginResponse
 
-    @GET("stories")
-    suspend fun getStories(): ArticlesResponse
+    @GET("articles")
+    suspend fun getArticles(): Response<List<ArticlesResponseItem>>
+
+    @GET("articles/{id}")
+    suspend fun getArticleById(
+        @Path("id") articleId: String
+    ): Response<ArticlesResponseItem>
 
     @GET("users/{id}")
     suspend fun getUserDetail(

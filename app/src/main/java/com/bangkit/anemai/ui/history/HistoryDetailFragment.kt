@@ -51,7 +51,6 @@ class HistoryDetailFragment : Fragment() {
 
             Glide.with(requireContext())
                 .load(result.imageUrl)
-                .load(result.imageUrl)
                 .into(imageViewDetection)
         }
     }

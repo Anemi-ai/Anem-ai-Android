@@ -56,5 +56,10 @@
     <string name="password_must_contain_uppercase">Password must contain at least one uppercase letter</string>
     <string name="password_must_contain_special_character">Password must contain at least one special character</string>
     <string name="name_must_be_filled">Name must be filled</string>
+    <string name="article_title">Article Title</string>
+    <string name="article_content">Article Content</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="more">More</string>
 
 </resources>

@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.anemai.data.model.ArticlesResponseItem
+import com.bangkit.anemai.data.model.ArticleItem
 import com.bangkit.anemai.databinding.CardArticleBinding
 import com.bumptech.glide.Glide
 
-class ArticleAdapter(private val onItemClick: (ArticlesResponseItem) -> Unit) : ListAdapter<ArticlesResponseItem, ArticleAdapter.ViewHolder>(DIFF_CALLBACK) {
+class ArticleAdapter(private val onItemClick: (ArticleItem) -> Unit) : ListAdapter<ArticleItem, ArticleAdapter.ViewHolder>(DIFF_CALLBACK) {
     class ViewHolder(private val binding: CardArticleBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(article: ArticlesResponseItem) {
+        fun bind(article: ArticleItem) {
             binding.cardTitle.text = article.title
             Glide.with(itemView.context)
                 .load(article.imageUrl)
@@ -33,13 +33,13 @@ class ArticleAdapter(private val onItemClick: (ArticlesResponseItem) -> Unit) : 
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ArticlesResponseItem>() {
-            override fun areItemsTheSame(oldItem: ArticlesResponseItem, newItem: ArticlesResponseItem): Boolean {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ArticleItem>() {
+            override fun areItemsTheSame(oldItem: ArticleItem, newItem: ArticleItem): Boolean {
                 return oldItem == newItem
             }
 
             @SuppressLint("DiffUtilEquals")
-            override fun areContentsTheSame(oldItem: ArticlesResponseItem, newItem: ArticlesResponseItem): Boolean {
+            override fun areContentsTheSame(oldItem: ArticleItem, newItem: ArticleItem): Boolean {
                 return oldItem == newItem
             }
 

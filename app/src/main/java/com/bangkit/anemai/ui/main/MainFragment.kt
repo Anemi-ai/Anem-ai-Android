@@ -1,6 +1,7 @@
 package com.bangkit.anemai.ui.main
 
 import android.Manifest
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -22,14 +23,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.anemai.R
-import com.bangkit.anemai.data.DataDummy
 import com.bangkit.anemai.data.adapter.ArticleAdapter
-import com.bangkit.anemai.data.model.ArticlesResponseItem
+import com.bangkit.anemai.data.model.ArticleItem
 import com.bangkit.anemai.data.pref.UserPreference
 import com.bangkit.anemai.data.pref.dataStore
 import com.bangkit.anemai.databinding.FragmentMainBinding
 import com.bangkit.anemai.ui.ViewModelFactory
 import com.bangkit.anemai.ui.welcome.WelcomeActivity
+import com.bangkit.anemai.utils.Result
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -52,11 +53,34 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.rvArticle.layoutManager = LinearLayoutManager(requireContext())
-        val articleList = DataDummy.generateArticleList()
+
+        viewModel.getArticles().observe(viewLifecycleOwner) { result ->
+            if (result != null) {
+                when(result) {
+                    is Result.Loading -> showLoading(true)
+                    is Result.Success -> {
+                        showLoading(false)
+
+                        setupArticle(result.data, view)
+                    }
+                    is Result.Error -> {
+                        showLoading(false)
+
+                        AlertDialog.Builder(context).apply {
+                            setMessage(getString(R.string.error_try_again))
+                            setPositiveButton(getString(R.string.ok)) { _, _ ->
+                            }
+
+                            create()
+                            show()
+                        }
+                    }
+                }
+            }
+        }
 
         setupAction(view)
         setupActionBar()
-        setupArticle(articleList, view)
         setupName()
 
     }
@@ -94,6 +118,10 @@ class MainFragment : Fragment() {
                 requestCameraPermissionLauncher.launch(PERMISSION_CAMERA)
             }
         }
+        binding.btnMore.setOnClickListener {
+            val toArticleList = MainFragmentDirections.actionMainFragmentToArticleFragment()
+            view.findNavController().navigate(toArticleList, extras)
+        }
     }
 
     private fun setupActionBar() {
@@ -123,9 +151,16 @@ class MainFragment : Fragment() {
         requireActivity().addMenuProvider(menuProvider)
     }
 
-    private fun setupArticle(articleList: List<ArticlesResponseItem>, view: View) {
-        val adapter = ArticleAdapter { article ->
+    private fun setupArticle(articleList: List<ArticleItem>, view: View) {
+        val extras = FragmentNavigatorExtras(
+            binding.bgLayout to "bg_layout"
+        )
 
+        val adapter = ArticleAdapter { article ->
+            val toArticleDetail = MainFragmentDirections.actionMainFragmentToArticleDetailFragment()
+            toArticleDetail.articleId = article.id.toString()
+
+            view.findNavController().navigate(toArticleDetail, extras)
         }
 
         binding.rvArticle.adapter = adapter
@@ -147,6 +182,14 @@ class MainFragment : Fragment() {
                 Toast.makeText(requireContext(), "Permission granted", Toast.LENGTH_SHORT).show()
             }
         }
+
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            (activity as? MainActivity)?.showLoading(true)
+        } else {
+            (activity as? MainActivity)?.showLoading(false)
+        }
+    }
 
     companion object {
         private const val PERMISSION_CAMERA = Manifest.permission.CAMERA

@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.bangkit.anemai.R
 import com.bangkit.anemai.data.model.DetectionResponse
+import com.bangkit.anemai.data.sevice.ApiConfig
 import com.bangkit.anemai.data.sevice.ApiService
 import com.bangkit.anemai.utils.Result
 import okhttp3.MultipartBody
@@ -85,12 +86,11 @@ class DetectionRepository(
     companion object {
         @Volatile
         private var instance: DetectionRepository? = null
-        fun getInstance(
-            application: Application,
-            apiService: ApiService
-        ): DetectionRepository =
-            instance ?: synchronized(this) {
+        fun getInstance(application: Application): DetectionRepository {
+            val apiService = ApiConfig.getMLApiService()
+            return instance ?: synchronized(this) {
                 instance ?: DetectionRepository(application, apiService)
             }.also { instance = it }
+        }
     }
 }
