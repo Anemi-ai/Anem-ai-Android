@@ -26,6 +26,7 @@ import androidx.transition.ChangeBounds
 import com.bangkit.anemai.R
 import com.bangkit.anemai.databinding.FragmentDetectionBinding
 import com.bangkit.anemai.ui.ViewModelFactory
+import com.bangkit.anemai.ui.main.MainActivity
 import com.bangkit.anemai.ui.main.MainViewModel
 import com.bangkit.anemai.ui.welcome.WelcomeActivity
 import com.bangkit.anemai.utils.Result
@@ -270,9 +271,9 @@ class DetectionFragment : Fragment() {
 
     private fun showLoading(state: Boolean) {
         if (state) {
-            (activity as? WelcomeActivity)?.showLoading(true)
+            (activity as? MainActivity)?.showLoading(true)
         } else {
-            (activity as? WelcomeActivity)?.showLoading(false)
+            (activity as? MainActivity)?.showLoading(false)
         }
     }
 
