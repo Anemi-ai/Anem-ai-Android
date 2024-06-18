@@ -29,7 +29,7 @@ class ViewModelFactory(private val detectionRepository: DetectionRepository, pri
         @JvmStatic
         fun getInstance(context: Context, application: Application): ViewModelFactory =
             instance ?: synchronized(this) {
-                instance ?: ViewModelFactory(Injection.provideDetectionRepository(application), Injection.provideRepository(context), Injection.provideArticleRepository(context, application))
+                instance ?: ViewModelFactory(Injection.provideDetectionRepository(context, application), Injection.provideRepository(context), Injection.provideArticleRepository(context, application))
             }.also { instance = it }
     }
 }

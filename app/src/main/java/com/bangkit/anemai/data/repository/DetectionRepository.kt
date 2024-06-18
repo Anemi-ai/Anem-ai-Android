@@ -1,28 +1,32 @@
 package com.bangkit.anemai.data.repository
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.bangkit.anemai.R
 import com.bangkit.anemai.data.model.DetectionResponse
+import com.bangkit.anemai.data.pref.UserPreference
 import com.bangkit.anemai.data.sevice.ApiConfig
 import com.bangkit.anemai.data.sevice.ApiService
 import com.bangkit.anemai.utils.Result
+import kotlinx.coroutines.flow.first
 import okhttp3.MultipartBody
 import org.json.JSONObject
 
 class DetectionRepository(
     private val application: Application,
     private val apiService: ApiService,
-//    private val preference
+    private val preference: UserPreference
 ) {
 
-    private val userId = "12122"
     fun predictAnemia(multipart: MultipartBody.Part): LiveData<Result<DetectionResponse>> = liveData {
         emit(Result.Loading)
 
         try {
+            val userId = preference.getSession().first().id
             val response = apiService.predictAnemia(userId = userId, multipart)
+            Log.d("DetectionReposPredict", userId)
 
             if (response.isSuccessful) {
                 val responseBody = response.body()
@@ -52,12 +56,13 @@ class DetectionRepository(
         emit(Result.Loading)
 
         try {
+            val userId = preference.getSession().first().id
             val response = apiService.getHistoryById(userId)
 
             if (response.isSuccessful) {
                 val responseBody = response.body()
                 val historyList = ArrayList<DetectionResponse>()
-                responseBody?.forEach { it ->
+                responseBody?.forEach {
                     val item = DetectionResponse(
                         it.id,
                         it.result,
@@ -86,10 +91,10 @@ class DetectionRepository(
     companion object {
         @Volatile
         private var instance: DetectionRepository? = null
-        fun getInstance(application: Application): DetectionRepository {
+        fun getInstance(application: Application, preference: UserPreference): DetectionRepository {
             val apiService = ApiConfig.getMLApiService()
             return instance ?: synchronized(this) {
-                instance ?: DetectionRepository(application, apiService)
+                instance ?: DetectionRepository(application, apiService, preference)
             }.also { instance = it }
         }
     }

@@ -23,9 +23,7 @@ import com.bangkit.anemai.databinding.FragmentHistoryBinding
 import com.bangkit.anemai.ui.ViewModelFactory
 import com.bangkit.anemai.ui.main.MainActivity
 import com.bangkit.anemai.ui.main.MainViewModel
-import com.bangkit.anemai.ui.welcome.WelcomeActivity
 import com.bangkit.anemai.utils.Result
-
 
 class HistoryFragment : Fragment() {
     private lateinit var binding: FragmentHistoryBinding

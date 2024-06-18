@@ -10,8 +10,11 @@ import com.bangkit.anemai.data.repository.UserRepository
 import kotlinx.coroutines.runBlocking
 
 object Injection {
-    fun provideDetectionRepository(application: Application): DetectionRepository {
-        return DetectionRepository.getInstance(application)
+    fun provideDetectionRepository(context: Context, application: Application): DetectionRepository {
+        val userPreference = UserPreference.getInstance(context.dataStore)
+        return runBlocking {
+            DetectionRepository.getInstance(application, userPreference)
+        }
     }
 
     fun provideRepository(context: Context): UserRepository {
