@@ -25,7 +25,7 @@ class DetectionRepository(
 
         try {
             val userId = preference.getSession().first().id
-            val response = apiService.predictAnemia(userId = userId, multipart)
+            val response = apiService.predictAnemia(userId, multipart)
             Log.d("DetectionReposPredict", userId)
 
             if (response.isSuccessful) {
@@ -57,7 +57,8 @@ class DetectionRepository(
 
         try {
             val userId = preference.getSession().first().id
-            val response = apiService.getHistoryById(userId)
+            val newuserId = "\"$userId\""
+            val response = apiService.getHistoryById(newuserId)
 
             if (response.isSuccessful) {
                 val responseBody = response.body()

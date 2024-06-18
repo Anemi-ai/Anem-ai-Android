@@ -1,7 +1,6 @@
 package com.bangkit.anemai.data.sevice
 
 import com.bangkit.anemai.data.model.DetectionResponse
-import com.bangkit.anemai.data.model.ArticlesResponse
 import com.bangkit.anemai.data.model.ArticlesResponseItem
 import com.bangkit.anemai.data.model.LoginResponse
 import com.bangkit.anemai.data.model.RegisterResponse
