@@ -2,12 +2,13 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Anemai" parent="Theme.Material3.DayNight">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/blue</item>
     </style>
 
     <style name="Theme.Anemai" parent="Base.Theme.Anemai">
         <item name="toolbarStyle">@style/Toolbar</item>
         <item name="actionBarStyle">@style/Actionbar</item>
+        <item name="alertDialogStyle">@style/LightAlertDialog</item>
     </style>
 
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
@@ -16,7 +17,7 @@
         <item name="windowSplashScreenAnimatedIcon">@drawable/animated_logo_splash_screen</item>
     </style>
 
-    <!--Toolbar, Actionbar & View Style-->
+    <!--Toolbar, Actionbar, View Style & Alert Dialog-->
     <style name="Toolbar" parent="Widget.Material3.Toolbar">
         <item name="titleTextColor">@color/white</item>
         <item name="android:fontFamily">@font/inter_bold</item>
@@ -28,7 +29,10 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
-    <!--Toolbar & Actionbar Style-->
+    <style name="LightAlertDialog" parent="Theme.Material3.Light.Dialog.Alert">
+        <item name="android:background">@color/white</item>
+    </style>
+    <!--Toolbar, Actionbar, View Style & Alert Dialog-->
 
     <!--Text Style-->
     <style name="TextTitle">

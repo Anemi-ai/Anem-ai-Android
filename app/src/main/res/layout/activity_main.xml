@@ -38,7 +38,8 @@
             android:layout_height="wrap_content"
             app:cardUseCompatPadding="true"
             app:cardElevation="5dp"
-            app:cardCornerRadius="20dp">
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="20dp"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"/>
 
                 <TextView
                     android:id="@+id/loading_text"

@@ -51,7 +51,8 @@
             android:transitionName="card_register"
             app:cardCornerRadius="18dp"
             android:orientation="vertical"
-            android:layout_margin="30dp">
+            android:layout_margin="30dp"
+            app:cardBackgroundColor="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,6 +78,7 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:hint="@string/full_name"
+                    android:textColorHint="@color/light_gray"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView">
 
                     <com.bangkit.anemai.ui.register.RegisterNameEditText
@@ -100,6 +102,7 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:hint="@string/birth_date"
+                    android:textColorHint="@color/light_gray"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView">
 
                     <com.bangkit.anemai.ui.register.RegisterBirthDateEditText
@@ -123,6 +126,7 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:hint="@string/gender"
+                    android:textColorHint="@color/light_gray"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView">
 
                     <com.bangkit.anemai.ui.register.RegisterGenderEditText
@@ -146,6 +150,7 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:hint="@string/email"
+                    android:textColorHint="@color/light_gray"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView">
 
                     <com.bangkit.anemai.ui.register.RegisterEmailEditText
@@ -169,6 +174,7 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:hint="@string/password"
+                    android:textColorHint="@color/light_gray"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView">
 
                     <com.bangkit.anemai.ui.register.RegisterPasswordEditText
@@ -190,7 +196,8 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:backgroundTint="@color/blue"
-                    android:text="@string/register"/>
+                    android:text="@string/register"
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:layout_width="wrap_content"

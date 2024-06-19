@@ -47,7 +47,7 @@
             app:cardCornerRadius="20dp"
             android:transitionName="result_layout"
             android:layout_marginTop="20dp"
-            android:background="@drawable/bg_white"
+            app:cardBackgroundColor="@color/white"
             app:layout_constraintTop_toBottomOf="@+id/image_view_layout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -56,8 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="15dp"
-                android:background="@drawable/bg_white">
+                android:padding="15dp">
 
                 <TextView
                     style="@style/TextContent.Black.Bold"

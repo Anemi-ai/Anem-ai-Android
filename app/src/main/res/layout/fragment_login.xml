@@ -50,7 +50,8 @@
             android:layout_margin="30dp"
             android:transitionName="card_login"
             app:cardCornerRadius="18dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:cardBackgroundColor="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -76,6 +77,7 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:hint="@string/email"
+                    android:textColorHint="@color/light_gray"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView">
 
                     <com.bangkit.anemai.ui.login.LoginEmailEditText
@@ -101,6 +103,7 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:hint="@string/password"
+                    android:textColorHint="@color/light_gray"
                     app:errorEnabled="true"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView">
 
@@ -124,7 +127,8 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:backgroundTint="@color/blue"
-                    android:text="@string/login"/>
+                    android:text="@string/login"
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:layout_width="wrap_content"
