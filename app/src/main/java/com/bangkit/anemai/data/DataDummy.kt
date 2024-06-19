@@ -1,5 +1,6 @@
 package com.bangkit.anemai.data
 
+import com.bangkit.anemai.data.model.ArticleItem
 import com.bangkit.anemai.data.model.DetectionResponse
 import com.bangkit.anemai.data.model.ArticlesResponse
 import com.bangkit.anemai.data.model.ArticlesResponseItem
@@ -44,6 +45,19 @@ object DataDummy {
             articleList.add(story)
         }
         return ArticlesResponse(articleList)
+    }
+
+    fun generateArticleItemList(): List<ArticleItem> {
+        val articleList = ArrayList<ArticleItem>()
+        for (i in 0..10) {
+            val story = ArticleItem(
+                "https://res.cloudinary.com/drjnb5zxa/image/upload/v1698108753/cld-sample-5.jpg",
+                "2024-05-31T15:08:39.868Z",
+                "https://res.cloudinary.com/drjnb5zxa/image/upload/v1698108753/cld-sample-5.jpg"
+            )
+            articleList.add(story)
+        }
+        return articleList
     }
     
     fun generateArticleList(): List<ArticlesResponseItem> {

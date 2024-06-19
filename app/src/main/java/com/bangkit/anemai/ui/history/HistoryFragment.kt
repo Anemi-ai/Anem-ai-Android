@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
@@ -21,7 +22,6 @@ import com.bangkit.anemai.data.adapter.HistoryAdapter
 import com.bangkit.anemai.data.model.DetectionResponse
 import com.bangkit.anemai.databinding.FragmentHistoryBinding
 import com.bangkit.anemai.ui.ViewModelFactory
-import com.bangkit.anemai.ui.main.MainActivity
 import com.bangkit.anemai.ui.main.MainViewModel
 import com.bangkit.anemai.utils.Result
 
@@ -118,9 +118,17 @@ class HistoryFragment : Fragment() {
 
     private fun showLoading(state: Boolean) {
         if (state) {
-            (activity as? MainActivity)?.showLoading(true)
+            binding.apply {
+                shimmerHistory.startShimmer()
+                shimmerHistory.visibility = View.VISIBLE
+                shimmerHistory.isVisible = true
+            }
         } else {
-            (activity as? MainActivity)?.showLoading(false)
+            binding.apply {
+                shimmerHistory.stopShimmer()
+                shimmerHistory.visibility = View.GONE
+                shimmerHistory.isVisible = false
+            }
         }
     }
 

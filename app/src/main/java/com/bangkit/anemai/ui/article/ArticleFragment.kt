@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
@@ -21,7 +22,6 @@ import com.bangkit.anemai.data.adapter.ArticleAdapter
 import com.bangkit.anemai.data.model.ArticleItem
 import com.bangkit.anemai.databinding.FragmentArticleBinding
 import com.bangkit.anemai.ui.ViewModelFactory
-import com.bangkit.anemai.ui.main.MainActivity
 import com.bangkit.anemai.ui.main.MainViewModel
 import com.bangkit.anemai.utils.Result
 
@@ -128,9 +128,17 @@ class ArticleFragment : Fragment() {
 
     private fun showLoading(state: Boolean) {
         if (state) {
-            (activity as? MainActivity)?.showLoading(true)
+            binding.apply {
+                shimmerArticle.startShimmer()
+                shimmerArticle.visibility = View.VISIBLE
+                shimmerArticle.isVisible = true
+            }
         } else {
-            (activity as? MainActivity)?.showLoading(false)
+            binding.apply {
+                shimmerArticle.stopShimmer()
+                shimmerArticle.visibility = View.GONE
+                shimmerArticle.isVisible = false
+            }
         }
     }
 

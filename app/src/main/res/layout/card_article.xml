@@ -47,27 +47,6 @@
             app:layout_constraintBottom_toBottomOf="@id/card_gradient"
             app:layout_constraintStart_toStartOf="@id/card_gradient"
             app:layout_constraintEnd_toEndOf="@id/card_gradient" />
-
-<!--        <TextView-->
-<!--            style="@style/TextContent.Bold.Colored"-->
-<!--            android:id="@+id/item_title"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginHorizontal="10dp"-->
-<!--            android:textSize="16sp"-->
-<!--            android:text="Nama Makanan"/>-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/item_desc"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="15dp"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            android:layout_marginHorizontal="10dp"-->
-<!--            android:ellipsize="end"-->
-<!--            android:maxLines="2"-->
-<!--            android:text="@string/deskripsi"/>-->
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
