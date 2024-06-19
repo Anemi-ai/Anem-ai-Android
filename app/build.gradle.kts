@@ -26,7 +26,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
 //        "${properties.getProperty("BASE_URL_ML")}"
-        buildConfigField("String", "BASE_URL_GENERAL", "\"https://anem-ai-fhouyj2qsa-et.a.run.app/\"")
+        buildConfigField("String", "BASE_URL_GENERAL", "\"https://anem-ai-v2-fhouyj2qsa-et.a.run.app/\"")
         buildConfigField("String", "BASE_URL_ML", "\"https://anem-ai-mlv1-fhouyj2qsa-et.a.run.app/\"")
         buildConfigField("String", "APPLICATION_ID", "\"com.bangkit.anemai\"")
     }
