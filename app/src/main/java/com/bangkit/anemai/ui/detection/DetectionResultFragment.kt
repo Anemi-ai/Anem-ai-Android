@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.transition.ChangeBounds
 import com.bangkit.anemai.R
@@ -89,6 +90,22 @@ class DetectionResultFragment : Fragment() {
                 .load(result.imageUrl)
                 .load(result.imageUrl)
                 .into(imageViewDetection)
+        }
+    }
+
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            binding.apply {
+                shimmerImage.startShimmer()
+                shimmerImage.visibility = View.VISIBLE
+                shimmerImage.isVisible = true
+            }
+        } else {
+            binding.apply {
+                shimmerImage.stopShimmer()
+                shimmerImage.visibility = View.GONE
+                shimmerImage.isVisible = false
+            }
         }
     }
 }

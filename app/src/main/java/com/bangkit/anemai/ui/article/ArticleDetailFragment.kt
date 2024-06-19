@@ -84,7 +84,7 @@ class ArticleDetailFragment : Fragment() {
             tvDate.text = article.createdAt
             if (!article.imageUrl.isNullOrEmpty()) {
                 Glide.with(requireContext())
-                    .load(BuildConfig.BASE_URL_GENERAL + article.imageUrl)
+                    .load(article.imageUrl)
                     .into(image)
             } else {
                 image.visibility = View.GONE
