@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.transition.ChangeBounds
+import com.bangkit.anemai.BuildConfig
 import com.bangkit.anemai.R
 import com.bangkit.anemai.data.model.ArticlesResponseItem
 import com.bangkit.anemai.databinding.FragmentArticleDetailBinding
@@ -83,7 +84,7 @@ class ArticleDetailFragment : Fragment() {
             tvDate.text = article.createdAt
             if (!article.imageUrl.isNullOrEmpty()) {
                 Glide.with(requireContext())
-                    .load(article.imageUrl)
+                    .load(BuildConfig.BASE_URL_GENERAL + article.imageUrl)
                     .into(image)
             } else {
                 image.visibility = View.GONE

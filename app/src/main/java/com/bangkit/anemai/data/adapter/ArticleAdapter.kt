@@ -6,7 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+
 import com.bangkit.anemai.R
+import com.bangkit.anemai.BuildConfig
 import com.bangkit.anemai.data.model.ArticleItem
 import com.bangkit.anemai.databinding.CardArticleBinding
 import com.bumptech.glide.Glide
@@ -16,7 +18,7 @@ class ArticleAdapter(private val onItemClick: (ArticleItem) -> Unit) : ListAdapt
         fun bind(article: ArticleItem) {
             binding.cardTitle.text = article.title
             Glide.with(itemView.context)
-                .load(article.imageUrl)
+                .load(BuildConfig.BASE_URL_GENERAL + article.imageUrl)
                 .placeholder(R.drawable.ic_place_holder)
                 .into(binding.cardImage)
         }
