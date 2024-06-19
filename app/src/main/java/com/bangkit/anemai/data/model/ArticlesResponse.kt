@@ -43,4 +43,7 @@ data class ArticleItem(
 	@field:SerializedName("image")
 	val imageUrl: String? = null,
 
+	@field:SerializedName("createdAt")
+	val createdAt: String? = null
+
 )

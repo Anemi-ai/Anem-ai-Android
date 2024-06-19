@@ -30,7 +30,8 @@ class ArticleRepository(
                     val item = ArticleItem(
                         it.id,
                         it.title,
-                        it.imageUrl
+                        it.imageUrl,
+                        it.createdAt
                     )
                     articleList.add(item)
                 }

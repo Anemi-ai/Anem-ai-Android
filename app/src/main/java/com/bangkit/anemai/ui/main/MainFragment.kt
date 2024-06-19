@@ -12,7 +12,6 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -165,7 +164,7 @@ class MainFragment : Fragment() {
         }
 
         binding.rvArticle.adapter = adapter
-        adapter.submitList(articleList.subList(0,3))
+        adapter.submitList(articleList.sortedBy { it.createdAt }.subList(0,3))
     }
 
     private fun checkPermission(permission: String): Boolean {

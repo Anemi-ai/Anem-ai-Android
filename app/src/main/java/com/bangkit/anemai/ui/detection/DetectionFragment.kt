@@ -28,7 +28,6 @@ import com.bangkit.anemai.databinding.FragmentDetectionBinding
 import com.bangkit.anemai.ui.ViewModelFactory
 import com.bangkit.anemai.ui.main.MainActivity
 import com.bangkit.anemai.ui.main.MainViewModel
-import com.bangkit.anemai.ui.welcome.WelcomeActivity
 import com.bangkit.anemai.utils.Result
 import com.bangkit.anemai.utils.createCustomTempFile
 import com.bangkit.anemai.utils.uriToFile
@@ -220,6 +219,7 @@ class DetectionFragment : Fragment() {
             viewFinder.visibility = View.GONE
             btnSwitchCamera.visibility = View.GONE
             btnPicture.visibility = View.GONE
+            eye.visibility = View.GONE
 
             currentImgUri?.let {
                 imageViewDetection.setImageURI(it)
@@ -235,6 +235,7 @@ class DetectionFragment : Fragment() {
             viewFinder.visibility = View.VISIBLE
             btnSwitchCamera.visibility = View.VISIBLE
             btnPicture.visibility = View.VISIBLE
+            eye.visibility = View.VISIBLE
         }
 
         currentImgUri = null

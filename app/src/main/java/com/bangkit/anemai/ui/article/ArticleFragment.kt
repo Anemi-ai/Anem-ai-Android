@@ -123,7 +123,7 @@ class ArticleFragment : Fragment() {
         }
 
         binding.rvArticle.adapter = adapter
-        adapter.submitList(articleList)
+        adapter.submitList(articleList.sortedBy { it.createdAt })
     }
 
     private fun showLoading(state: Boolean) {

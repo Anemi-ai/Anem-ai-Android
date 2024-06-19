@@ -63,6 +63,9 @@ class HistoryFragment : Fragment() {
                             setMessage(result.error)
                             setPositiveButton(getString(R.string.ok)) { _, _ ->
                             }
+                            setOnDismissListener {
+                                requireActivity().supportFragmentManager.popBackStack()
+                            }
 
                             create()
                             show()
@@ -85,7 +88,7 @@ class HistoryFragment : Fragment() {
             view.findNavController().navigate(toDetailFragment, extras)
         }
         binding.rvHistory.adapter = adapter
-        adapter.submitList(detectionResponse)
+        adapter.submitList(detectionResponse.sortedBy { it.createdAt })
     }
 
     private fun setupActionbar() {

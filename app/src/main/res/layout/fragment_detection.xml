@@ -31,12 +31,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
+            <ImageView
+                android:id="@+id/eye"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_eye_outline"
+                android:alpha=".25"/>
+
             <ImageButton
                 android:id="@+id/btn_picture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_camera_white"
-                android:background="@drawable/bg_circle_blue"
+                android:background="@drawable/bg_circle_white"
                 android:layout_marginBottom="20dp"
                 android:padding="5dp"
                 app:layout_constraintStart_toStartOf="@+id/viewFinder"
@@ -47,8 +54,8 @@
                 android:id="@+id/btn_switch_camera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_camera_switch_blue"
-                android:background="@drawable/bg_circle_white"
+                android:src="@drawable/ic_camera_switch_white"
+                android:background="@drawable/bg_circle_blue"
                 android:layout_marginBottom="20dp"
                 android:padding="5dp"
                 app:layout_constraintStart_toEndOf="@+id/btn_picture"

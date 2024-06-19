@@ -92,20 +92,4 @@ class DetectionResultFragment : Fragment() {
                 .into(imageViewDetection)
         }
     }
-
-    private fun showLoading(state: Boolean) {
-        if (state) {
-            binding.apply {
-                shimmerImage.startShimmer()
-                shimmerImage.visibility = View.VISIBLE
-                shimmerImage.isVisible = true
-            }
-        } else {
-            binding.apply {
-                shimmerImage.stopShimmer()
-                shimmerImage.visibility = View.GONE
-                shimmerImage.isVisible = false
-            }
-        }
-    }
 }

@@ -37,7 +37,8 @@
             android:layout_height="wrap_content"
             app:cardUseCompatPadding="true"
             app:cardElevation="5dp"
-            app:cardCornerRadius="20dp">
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
