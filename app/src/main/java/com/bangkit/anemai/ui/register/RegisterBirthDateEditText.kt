@@ -7,8 +7,10 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
+import com.bangkit.anemai.R
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 
 class RegisterBirthDateEditText @JvmOverloads constructor(
@@ -49,6 +51,26 @@ class RegisterBirthDateEditText @JvmOverloads constructor(
     }
 
     private fun updateEditText() {
-        setText(dateFormat.format(calendar.time))
+        val selectedDate = calendar.time
+        val age = calculateAge(selectedDate)
+        if (age < 13) {
+            error = context.getString(R.string.error_age_less_than_17)
+            setText(R.string.error_age_less_than_17)
+        } else {
+            setText(dateFormat.format(selectedDate))
+            error = null
+        }
+    }
+
+    private fun calculateAge(birthDate: Date): Int {
+        val today = Calendar.getInstance()
+        val birthDay = Calendar.getInstance()
+        birthDay.time = birthDate
+
+        var age = today.get(Calendar.YEAR) - birthDay.get(Calendar.YEAR)
+        if (today.get(Calendar.DAY_OF_YEAR) < birthDay.get(Calendar.DAY_OF_YEAR)) {
+            age--
+        }
+        return age
     }
 }

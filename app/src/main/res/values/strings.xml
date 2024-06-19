@@ -61,5 +61,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="more">More</string>
+    <string name="error_age_less_than_17">Must be at least 17 years old</string>
 
 </resources>
