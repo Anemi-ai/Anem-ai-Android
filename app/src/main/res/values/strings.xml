@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Anem.ai</string>
+    <string name="app_name" translatable="false">Anem.ai</string>
     <string name="greeting">Hello,</string>
-    <string name="greeting_question">Want to do your check-up today?</string>
+    <string name="greeting_question" translatable="false">Say goodbye to Anemia!</string>
     <string name="greeting_name">%s!</string>
     <string name="anemia">Anemia</string>
     <string name="check_up">Check-Up</string>
@@ -22,10 +22,10 @@
     <string name="detection_result">Result: %s</string>
     <string name="detection_date">Date: %s</string>
     <string name="headline_welcome">Feeling Headache?</string>
-    <string name="bodycopy_welcome">Headache bisa berasal dari anemia and you can check your Anemia using this app, for FREE! Login or register now!</string>
+    <string name="bodycopy_welcome">"Headaches can come from anemia and you can check your Anemia using this app, it's FREE! Log in or register now! "</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
-    <string name="email">Email</string>
+    <string name="email" translatable="false">Email</string>
     <string name="password">Password</string>
     <string name="login_with_google">Login with Google</string>
     <string name="or">OR</string>
@@ -33,13 +33,13 @@
     <string name="birth_date">Birth Date</string>
     <string name="gender">Gender</string>
     <string name="register_with_google">Register with Google</string>
-    <string name="error_restart">Something went wrong. Please restart this app</string>
+    <string name="error_restart">Something went wrong. Please restart this app!</string>
     <string name="anemia_detection">Anemia Detection</string>
-    <string name="ok">OK</string>
+    <string name="ok" translatable="false">OK</string>
     <string name="loading_wait">Please don\'t close this screen</string>
     <string name="detection_result_name">Detection Result</string>
 
-    <string name="error_try_again">Something went wrong. Please try again.</string>
+    <string name="error_try_again">Something went wrong. Please try again!</string>
     <string name="detection_accuracy">Accuracy: %s</string>
     <string name="detection_detail">Detection Detail</string>
     <string name="additional_information">Additional Information</string>
@@ -58,8 +58,6 @@
     <string name="name_must_be_filled">Name must be filled</string>
     <string name="article_title">Article Title</string>
     <string name="article_content">Article Content</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="more">More</string>
     <string name="error_age_less_than_17">Must be at least 17 years old</string>
 

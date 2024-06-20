@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">Anem.ai</string>
+    <string name="greeting">Halo,</string>
+    <string name="greeting_question">Say goodbye to Anemia!</string>
+    <string name="greeting_name">%s!</string>
+    <string name="anemia">Anemia</string>
+    <string name="check_up">Pemeriksaan</string>
+    <string name="checkup_desc">Deteksi dengan\nMachine Learning</string>
+    <string name="history">Riwayat</string>
+    <string name="shows_records_nof_detection">Menampilkan riwayat\ndeteksi</string>
+    <string name="article">Artikel</string>
+
+    <string name="dummy_article_headline">Judul Article</string>
+    <string name="dummy_history_date">Sabtu, 12 Desember 2012</string>
+    <string name="dummy_history_result">Hasil: %s</string>
+
+    <string name="history_detection">Riwayat Deteksi</string>
+    <string name="history_detection_detail">Detail Deteksi</string>
+
+    <string name="back">Back\n</string>
+    <string name="logout">Keluar</string>
+    <string name="detection_result">Hasil: %s</string>
+    <string name="detection_date">Tanggal: %s</string>
+    <string name="headline_welcome">Sakit Kepala?</string>
+    <string name="bodycopy_welcome">"Sakit kepala bisa berasal dari anemia dan Anda dapat memeriksa Anemia Anda menggunakan aplikasi ini, GRATIS! Masuk atau daftar sekarang! "</string>
+    <string name="register">Daftar</string>
+    <string name="login">Masuk</string>
+    <string name="email">Email</string>
+    <string name="password">Sandi</string>
+    <string name="login_with_google">Masuk dengan Google</string>
+    <string name="or">atau</string>
+    <string name="full_name">Nama Lengkap</string>
+    <string name="birth_date">Tanggal Lahir</string>
+    <string name="gender">Jenis Kelamin</string>
+    <string name="register_with_google">Daftar dengan Google</string>
+    <string name="error_restart">Terjadi kesalahan. Silahkan mulai ulang aplikasi!</string>
+    <string name="anemia_detection">Deteksi Anemia</string>
+    <string name="ok">OK</string>
+    <string name="loading_wait">Mohon tunggu. Jangan tinggalkan halaman ini!</string>
+    <string name="detection_result_name">Detection Result</string>
+
+    <string name="error_try_again">Terjadi kesalahan. Silahkan coba lagi!</string>
+    <string name="detection_accuracy">Akurasi: %s</string>
+    <string name="detection_detail">Detail Deteksi</string>
+    <string name="additional_information">Informasi Tambahan</string>
+    <string name="detection_precaution">Pencegahan: %s</string>
+    <string name="detection_risk">Resiko: %s</string>
+    <string name="detection_suggestion">Saran: %s</string>
+    <string name="precaution">Pencegahan</string>
+    <string name="risk">Resiko</string>
+    <string name="suggestion">Saran</string>
+
+    <string name="wrong_email_format">Format email salah!</string>
+    <string name="password_must_be_filled">Kata sandi harus diisi!</string>
+    <string name="password_must_contain_lowercase">Password must contain at least one lowercase letter</string>
+    <string name="password_must_contain_uppercase">Password must contain at least one uppercase letter</string>
+    <string name="password_must_contain_special_character">Password must contain at least one special character</string>
+    <string name="name_must_be_filled">Name must be filled</string>
+    <string name="article_title">Article Title</string>
+    <string name="article_content">Article Content</string>
+    <string name="more">More</string>
+    <string name="error_age_less_than_17">Must be at least 17 years old</string>
+
+</resources>
