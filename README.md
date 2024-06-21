@@ -1,4 +1,4 @@
-<img src="https://github.com/Rifala/anem.ai/blob/main/logo_launcher_anem_ai_horizontal.png"/>
+<img src="./assets/anemai_logo.png"/>
 
 ## **What is Anem.ai?**
 Anem.ai is an app to detect anemia based on the user's conjunctiva. Anemia is a condition in which the body has fewer red blood cells than normal or lower than usual.
@@ -13,16 +13,17 @@ By creating this app we hope that this app can raise people's awareness about an
 
 ## **Preview**
 ### **Welcome Page**
-<img src="https://github.com/Rifala/anem.ai/blob/main/InShot_20240621_080337187.gif" height="554"/>
+<img src="./assets/welcomepage.gif" height="554"/>
+./assets/Screenshots Application anem.ai.png
 
 ### **Detection**
-<img src="https://github.com/Rifala/anem.ai/blob/main/InShot_20240621_074931528.gif" height="554"/>
+<img src="./assets/detection.gif" height="554"/>
 
 ### **Detection History**
-<img src="https://github.com/Rifala/anem.ai/blob/main/InShot_20240621_075405573.gif" height="554"/>
+<img src="./assets/history.gif" height="554"/>
 
 ### **Article**
-<img src="https://github.com/Rifala/anem.ai/blob/main/InShot_20240621_075919961.gif" height="554"/>
+<img src="./assets/article.gif" height="554"/>
 
 ## **How to run this project locally?**:running:
 1. Make sure you have Android Studio installed in your computer
@@ -30,8 +31,9 @@ By creating this app we hope that this app can raise people's awareness about an
 3. Make sure the sdk level of the device for running this project is 7.0 or above
 4. Now it's ready to run!
 
-### **Library in this project**
-1. Glide
-2. Facebook shimmer
-3. Retrofit
-4. CameraX
+### **Tools & Library**
+1. Android Studio
+2. Glide
+3. Facebook shimmer
+4. Retrofit
+5. CameraX
