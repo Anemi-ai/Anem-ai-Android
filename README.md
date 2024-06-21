@@ -1,6 +1,6 @@
-<img src="./assets/anemai_logo.png"/>
+<img src="https://github.com/Rifala/anem.ai/blob/main/logo_launcher_anem_ai_horizontal.png"/>
 
-## **What is Anem.ai?**
+## **What is Anem.ai?**:eyes:
 Anem.ai is an app to detect anemia based on the user's conjunctiva. Anemia is a condition in which the body has fewer red blood cells than normal or lower than usual.
 Based on data from the Indonesian Ministry of Health in 2023, the prevalence of anemia according to gender is 14,4% for men and 18% for women.
 By creating this app we hope that this app can raise people's awareness about anemia.
@@ -13,17 +13,16 @@ By creating this app we hope that this app can raise people's awareness about an
 
 ## **Preview**
 ### **Welcome Page**
-<img src="./assets/welcomepage.gif" height="554"/>
-./assets/Screenshots Application anem.ai.png
+<img src="https://github.com/Rifala/anem.ai/blob/main/InShot_20240621_080337187.gif" height="554"/>
 
 ### **Detection**
-<img src="./assets/detection.gif" height="554"/>
+<img src="https://github.com/Rifala/anem.ai/blob/main/InShot_20240621_074931528.gif" height="554"/>
 
 ### **Detection History**
-<img src="./assets/history.gif" height="554"/>
+<img src="https://github.com/Rifala/anem.ai/blob/main/InShot_20240621_075405573.gif" height="554"/>
 
 ### **Article**
-<img src="./assets/article.gif" height="554"/>
+<img src="https://github.com/Rifala/anem.ai/blob/main/InShot_20240621_075919961.gif" height="554"/>
 
 ## **How to run this project locally?**:running:
 1. Make sure you have Android Studio installed in your computer
