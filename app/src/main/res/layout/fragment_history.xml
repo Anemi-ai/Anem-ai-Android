@@ -20,6 +20,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <TextView
+            style="@style/TextContent.Black"
+            android:id="@+id/no_data_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/no_data_message"
+            android:gravity="center"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmer_history"
             android:layout_width="0dp"

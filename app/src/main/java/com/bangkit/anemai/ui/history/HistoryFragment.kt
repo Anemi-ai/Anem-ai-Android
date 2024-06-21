@@ -59,16 +59,20 @@ class HistoryFragment : Fragment() {
                     is Result.Error -> {
                         showLoading(false)
 
-                        AlertDialog.Builder(context).apply {
-                            setMessage(result.error)
-                            setPositiveButton(getString(R.string.ok)) { _, _ ->
-                            }
-                            setOnDismissListener {
-                                requireActivity().supportFragmentManager.popBackStack()
-                            }
+                        if (result.error.contains("tidak ditemukan")) {
+                            binding.noDataMessage.visibility = View.VISIBLE
+                        } else {
+                            AlertDialog.Builder(context).apply {
+                                setMessage(result.error)
+                                setPositiveButton(getString(R.string.ok)) { _, _ ->
+                                }
+                                setOnDismissListener {
+                                    requireActivity().supportFragmentManager.popBackStack()
+                                }
 
-                            create()
-                            show()
+                                create()
+                                show()
+                            }
                         }
                     }
                 }
@@ -86,7 +90,15 @@ class HistoryFragment : Fragment() {
             view.findNavController().navigate(toDetailFragment, extras)
         }
         binding.rvHistory.adapter = adapter
-        adapter.submitList(detectionResponse.sortedByDescending { it.createdAt })
+        if(detectionResponse.isNullOrEmpty()) {
+            binding.apply {
+                rvHistory.visibility = View.INVISIBLE
+                noDataMessage.visibility = View.VISIBLE
+            }
+        } else {
+            binding.noDataMessage.visibility = View.GONE
+            adapter.submitList(detectionResponse.sortedByDescending { it.createdAt })
+        }
     }
 
     private fun setupActionbar() {
