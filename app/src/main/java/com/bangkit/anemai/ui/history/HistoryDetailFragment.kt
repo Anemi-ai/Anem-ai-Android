@@ -33,8 +33,6 @@ class HistoryDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val result = HistoryDetailFragmentArgs.fromBundle(arguments as Bundle).detectionHistory
 
-
-        setupActionbar()
         setup(result)
     }
 
@@ -85,5 +83,10 @@ class HistoryDetailFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         requireActivity().removeMenuProvider(menuProvider)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setupActionbar()
     }
 }

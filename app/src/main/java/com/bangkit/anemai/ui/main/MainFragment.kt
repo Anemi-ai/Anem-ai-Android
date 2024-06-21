@@ -80,7 +80,6 @@ class MainFragment : Fragment() {
         }
 
         setupAction(view)
-        setupActionBar()
         setupName()
 
     }
@@ -94,7 +93,7 @@ class MainFragment : Fragment() {
             viewModel.getDetailUser(idUser)
 
             viewModel.userDetail.observe(viewLifecycleOwner) { userDetail ->
-                binding.tvGreeetingName.text = userDetail.userResult!!.name
+                binding.tvGreeetingName.text = getString(R.string.greeting_name, userDetail.userResult!!.name)
             }
         }
     }
@@ -104,6 +103,10 @@ class MainFragment : Fragment() {
         requireActivity().removeMenuProvider(menuProvider)
     }
 
+    override fun onResume() {
+        super.onResume()
+        setupActionBar()
+    }
     private fun setupAction(view: View) {
         val extras = FragmentNavigatorExtras(
             binding.bgLayout to "bg_layout"
@@ -164,7 +167,7 @@ class MainFragment : Fragment() {
         }
 
         binding.rvArticle.adapter = adapter
-        adapter.submitList(articleList.sortedBy { it.createdAt }.subList(0,3))
+        adapter.submitList(articleList.sortedByDescending { it.createdAt }.subList(0,3))
     }
 
     private fun checkPermission(permission: String): Boolean {

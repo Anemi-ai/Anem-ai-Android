@@ -64,12 +64,12 @@ class DetectionFragment : Fragment() {
         requireActivity().actionBar?.hide()
         startCamera()
         setupAction(view)
-        setupActionbar()
     }
 
     override fun onResume() {
         super.onResume()
         startCamera()
+        setupActionbar()
     }
 
     override fun onStop() {

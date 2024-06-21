@@ -13,12 +13,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.transition.ChangeBounds
-import com.bangkit.anemai.BuildConfig
 import com.bangkit.anemai.R
 import com.bangkit.anemai.data.model.ArticlesResponseItem
 import com.bangkit.anemai.databinding.FragmentArticleDetailBinding
 import com.bangkit.anemai.ui.ViewModelFactory
-import com.bangkit.anemai.ui.main.MainActivity
 import com.bangkit.anemai.ui.main.MainViewModel
 import com.bangkit.anemai.utils.Result
 import com.bumptech.glide.Glide
@@ -77,6 +75,11 @@ class ArticleDetailFragment : Fragment() {
         requireActivity().removeMenuProvider(menuProvider)
     }
 
+    override fun onResume() {
+        super.onResume()
+        setupActionbar()
+    }
+
     private fun setupData(article: ArticlesResponseItem) {
         binding.apply {
             tvTitle.text = article.title
@@ -122,9 +125,19 @@ class ArticleDetailFragment : Fragment() {
 
     private fun showLoading(state: Boolean) {
         if (state) {
-            (activity as? MainActivity)?.showLoading(true)
+            binding.apply {
+                progressBar.visibility = View.VISIBLE
+                tvContent.visibility = View.GONE
+                tvDate.visibility = View.GONE
+                tvTitle.visibility = View.GONE
+            }
         } else {
-            (activity as? MainActivity)?.showLoading(false)
+            binding.apply {
+                progressBar.visibility = View.GONE
+                tvContent.visibility = View.VISIBLE
+                tvDate.visibility = View.VISIBLE
+                tvTitle.visibility = View.VISIBLE
+            }
         }
     }
 }

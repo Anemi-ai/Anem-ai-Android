@@ -82,6 +82,11 @@ class ArticleFragment : Fragment() {
         requireActivity().removeMenuProvider(menuProvider)
     }
 
+    override fun onResume() {
+        super.onResume()
+        setupActionbar()
+    }
+
     private fun setupActionbar() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.article)
@@ -123,7 +128,7 @@ class ArticleFragment : Fragment() {
         }
 
         binding.rvArticle.adapter = adapter
-        adapter.submitList(articleList.sortedBy { it.createdAt })
+        adapter.submitList(articleList.sortedByDescending { it.createdAt })
     }
 
     private fun showLoading(state: Boolean) {

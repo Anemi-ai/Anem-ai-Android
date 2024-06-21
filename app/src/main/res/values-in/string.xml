@@ -58,7 +58,7 @@
     <string name="name_must_be_filled">Name must be filled</string>
     <string name="article_title">Article Title</string>
     <string name="article_content">Article Content</string>
-    <string name="more">More</string>
+    <string name="more">Selengkapnya</string>
     <string name="error_age_less_than_17">Must be at least 17 years old</string>
 
 </resources>

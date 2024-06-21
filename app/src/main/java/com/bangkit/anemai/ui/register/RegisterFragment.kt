@@ -1,12 +1,12 @@
 package com.bangkit.anemai.ui.register
 
-import android.content.Intent
 import android.os.Bundle
 import android.transition.ChangeBounds
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
@@ -15,9 +15,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import com.bangkit.anemai.R
 import com.bangkit.anemai.databinding.FragmentRegisterBinding
 import com.bangkit.anemai.ui.ViewModelFactory
-import com.bangkit.anemai.ui.main.MainActivity
 import com.bangkit.anemai.ui.welcome.WelcomeActivity
-import com.bangkit.anemai.utils.ProgressBarHandler
 
 class RegisterFragment : Fragment() {
 
@@ -76,6 +74,15 @@ class RegisterFragment : Fragment() {
     }
 
     private fun showAlertDialogSuccess(title: String, message: String) {
+        Toast.makeText(requireContext(), "Register Success", Toast.LENGTH_SHORT).show()
+        val extrasLogin = FragmentNavigatorExtras(
+            binding.cardRegister to "card_login",
+            binding.headlineWelcome to "headline_welcome",
+            binding.bodycopyWelcome to "bodycopy_welcome",
+            binding.ivWelcome to "iv_welcome"
+        )
+        view?.findNavController()?.navigate(R.id.action_registerFragment_to_loginFragment, null, null, extrasLogin)
+
         AlertDialog.Builder(this.requireContext())
             .setTitle(title)
             .setMessage(message)

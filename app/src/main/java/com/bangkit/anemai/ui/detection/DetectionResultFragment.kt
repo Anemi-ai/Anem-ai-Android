@@ -38,13 +38,17 @@ class DetectionResultFragment : Fragment() {
 
         val detectionResult = DetectionResultFragmentArgs.fromBundle(arguments as Bundle).detectionResult
 
-        setupActionbar()
         setupData(detectionResult)
     }
 
     override fun onStop() {
         super.onStop()
         requireActivity().removeMenuProvider(menuProvider)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setupActionbar()
     }
 
     private fun setupActionbar() {

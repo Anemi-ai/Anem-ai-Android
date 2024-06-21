@@ -74,8 +74,6 @@ class HistoryFragment : Fragment() {
                 }
             }
         }
-
-        setupActionbar()
     }
 
     private fun setupHistoryData(detectionResponse: List<DetectionResponse>, view: View) {
@@ -88,7 +86,7 @@ class HistoryFragment : Fragment() {
             view.findNavController().navigate(toDetailFragment, extras)
         }
         binding.rvHistory.adapter = adapter
-        adapter.submitList(detectionResponse.sortedBy { it.createdAt })
+        adapter.submitList(detectionResponse.sortedByDescending { it.createdAt })
     }
 
     private fun setupActionbar() {
@@ -138,5 +136,10 @@ class HistoryFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         requireActivity().removeMenuProvider(menuProvider)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setupActionbar()
     }
 }
